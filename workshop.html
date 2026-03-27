@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Workshop × Chasy — Xiu Show Cho Coi</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Mali:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Chasy Brand Colors */
+  --sun-orange: #FD8D04;
+  --cyber-yellow: #FCCC13;
+  --butter-yellow: #FEE9A1;
+  --bright-red: #E41E26;
+  --carrot: #F36F40;
+  --bright-white: #F4F5F0;
+  /* Functional */
+  --bg: var(--bright-white);
+  --text: #1a1a1a;
+  --text-secondary: #5a5a5a;
+  --text-light: #888;
+  --card-bg: #ffffff;
+  --card-border: rgba(253,141,4,0.15);
+  --card-hover: rgba(253,141,4,0.08);
+  --section-alt: #faf9f6;
+  --radius: 16px;
+  --radius-lg: 24px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ====== LAYOUT ====== */
+.content { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+section {
+  padding: 80px 0;
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+section.visible { opacity: 1; transform: translateY(0); }
+
+/* ====== NAV ====== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 14px 24px;
+  background: rgba(244,245,240,0.9); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  display: flex; align-items: center; gap: 12px;
+}
+nav .logo {
+  font-family: 'Mali', cursive;
+  font-weight: 700; color: var(--sun-orange); font-size: 1.15rem;
+}
+nav .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyber-yellow); }
+nav .nav-title { font-size: 0.85rem; color: var(--text-light); font-weight: 500; }
+nav .nav-links { margin-left: auto; display: flex; gap: 24px; }
+nav .nav-links a {
+  color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;
+  font-weight: 500; transition: color 0.3s;
+}
+nav .nav-links a:hover { color: var(--sun-orange); }
+
+/* ====== HERO ====== */
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column;
+  justify-content: center; align-items: center; text-align: center;
+  padding-top: 80px; background: var(--bg);
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: -20%; right: -15%;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(253,141,4,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: ''; position: absolute; bottom: -10%; left: -10%;
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(252,204,19,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: white; border: 1px solid var(--card-border);
+  border-radius: 100px; padding: 8px 20px; font-size: 0.85rem;
+  color: var(--sun-orange); font-weight: 600; margin-bottom: 32px;
+  box-shadow: 0 2px 12px rgba(253,141,4,0.08);
+  position: relative; z-index: 1;
+}
+.hero-eyebrow .pulse {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--sun-orange);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.6); }
+}
+
+.hero h1 {
+  font-family: 'Mali', cursive;
+  font-size: clamp(2.2rem, 5.5vw, 3.8rem); line-height: 1.3;
+  font-weight: 700; color: var(--text);
+  margin-bottom: 20px; position: relative; z-index: 1;
+}
+.hero h1 .highlight {
+  color: var(--sun-orange);
+}
+.hero h1 .emoji {
+  display: inline-block; animation: wave 2s ease-in-out infinite;
+}
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(15deg); }
+  75% { transform: rotate(-5deg); }
+}
+
+.hero-sub {
+  font-size: 1.15rem; color: var(--text-secondary);
+  max-width: 560px; margin-bottom: 16px;
+  position: relative; z-index: 1;
+}
+
+.hero-stats {
+  display: flex; gap: 32px; margin-bottom: 40px;
+  position: relative; z-index: 1;
+}
+.hero-stat {
+  text-align: center;
+}
+.hero-stat .num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2rem; font-weight: 700; color: var(--sun-orange);
+  line-height: 1.2;
+}
+.hero-stat .label {
+  font-size: 0.8rem; color: var(--text-light); font-weight: 500;
+}
+
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--sun-orange);
+  color: white; font-weight: 700; padding: 16px 36px;
+  border-radius: 100px; text-decoration: none; font-size: 1.05rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 20px rgba(253,141,4,0.25);
+  position: relative; z-index: 1;
+  font-family: 'Mali', cursive;
+}
+.hero-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(253,141,4,0.35);
+}
+
+/* ====== SECTION HEADERS ====== */
+.section-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;
+  color: var(--sun-orange); font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; margin-bottom: 8px;
+}
+.section-title {
+  font-family: 'Mali', cursive;
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem); line-height: 1.3;
+  font-weight: 700; color: var(--text);
+  margin-bottom: 12px;
+}
+.section-subtitle {
+  font-size: 1.05rem; color: var(--text-secondary);
+  max-width: 600px; margin-bottom: 48px;
+}
+
+/* ====== EVOLUTION TIMELINE ====== */
+.evo-message {
+  text-align: center; margin-bottom: 56px;
+  padding: 32px; background: linear-gradient(135deg, #fff8f0, #fff3e0);
+  border-radius: var(--radius-lg); border: 1px solid rgba(253,141,4,0.15);
+}
+.evo-message .big-text {
+  font-family: 'Mali', cursive; font-size: 1.4rem; font-weight: 700;
+  color: var(--text); margin-bottom: 8px;
+}
+.evo-message .big-text .orange { color: var(--sun-orange); }
+.evo-message p { color: var(--text-secondary); font-size: 0.95rem; }
+
+.evo-track {
+  display: flex; flex-direction: column; gap: 0;
+  position: relative;
+}
+.evo-track::before {
+  content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
+  width: 3px; transform: translateX(-50%);
+  background: linear-gradient(to bottom,
+    rgba(253,141,4,0.1) 0%,
+    rgba(253,141,4,0.3) 40%,
+    var(--sun-orange) 100%
+  );
+  z-index: 0;
+}
+
+.evo-stage {
+  position: relative; z-index: 1;
+  display: flex; align-items: stretch; gap: 0;
+  margin-bottom: 40px;
+}
+.evo-stage .evo-left,
+.evo-stage .evo-right {
+  flex: 1; padding: 0 32px;
+}
+.evo-stage .evo-center {
+  flex-shrink: 0; width: 80px; display: flex;
+  flex-direction: column; align-items: center; justify-content: flex-start;
+  padding-top: 8px;
+}
+.evo-node {
+  width: 56px; height: 56px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; position: relative;
+}
+.evo-stage.s1 .evo-node { background: #fff0d4; border: 3px solid rgba(253,141,4,0.25); }
+.evo-stage.s2 .evo-node { background: #ffe8c0; border: 3px solid rgba(253,141,4,0.45); }
+.evo-stage.s3 .evo-node {
+  background: var(--sun-orange); border: 3px solid var(--sun-orange);
+  box-shadow: 0 4px 20px rgba(253,141,4,0.3);
+}
+.evo-stage-name {
+  font-family: 'Mali', cursive; font-weight: 700;
+  font-size: 0.8rem; color: var(--sun-orange);
+  text-align: center; margin-top: 8px; line-height: 1.2;
+}
+
+.evo-card {
+  background: var(--card-bg); border: 1px solid var(--card-border);
+  border-radius: var(--radius); padding: 28px;
+  transition: all 0.3s ease;
+}
+.evo-card:hover {
+  box-shadow: 0 8px 24px rgba(253,141,4,0.08);
+  transform: translateY(-2px);
+}
+.evo-card h3 {
+  font-family: 'Mali', cursive; font-weight: 700;
+  font-size: 1.15rem; margin-bottom: 12px; color: var(--text);
+}
+.evo-card .evo-trait {
+  display: flex; align-items: flex-start; gap: 10px;
+  margin-bottom: 10px; font-size: 0.9rem; line-height: 1.5;
+}
+.evo-card .evo-trait .icon {
+  flex-shrink: 0; width: 24px; height: 24px; border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem;
+}
+.evo-card .evo-trait p { color: var(--text-secondary); }
+.evo-card .evo-trait strong { color: var(--text); font-weight: 600; }
+
+.evo-example {
+  margin-top: 16px; padding: 14px 18px;
+  background: #faf9f6; border-radius: 12px;
+  font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;
+  border-left: 3px solid var(--sun-orange);
+}
+.evo-example .ex-label {
+  font-weight: 700; color: var(--sun-orange); font-size: 0.75rem;
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;
+}
+
+.evo-arrow-down {
+  text-align: center; padding: 8px 0; font-size: 1.5rem; color: var(--sun-orange);
+  opacity: 0.5;
+}
+
+.evo-bottom-message {
+  text-align: center; margin-top: 40px; padding: 24px;
+  border: 2px dashed rgba(253,141,4,0.2); border-radius: var(--radius);
+}
+.evo-bottom-message p {
+  font-family: 'Mali', cursive; font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+.evo-bottom-message .you { color: var(--sun-orange); font-weight: 700; }
+
+/* ====== USE CASE CARDS ====== */
+.uc-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+.uc-card {
+  background: var(--card-bg); border: 1px solid var(--card-border);
+  border-radius: var(--radius); padding: 20px 24px;
+  cursor: pointer; transition: all 0.3s ease;
+}
+.uc-card:hover {
+  background: var(--card-hover); transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(253,141,4,0.08);
+}
+.uc-card .uc-badge {
+  display: inline-block; padding: 3px 10px; border-radius: 100px;
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.5px; margin-bottom: 10px;
+}
+.uc-badge.chat { background: #e8f4fd; color: #1a7ec5; }
+.uc-badge.code { background: #e8fde8; color: #1a8c1a; }
+.uc-badge.web { background: #f3e8fd; color: #7c1ac5; }
+.uc-badge.skill { background: #fde8e8; color: #c51a1a; }
+.uc-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; color: var(--text); }
+.uc-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
+.uc-card .uc-expand {
+  max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
+}
+.uc-card.open .uc-expand { max-height: 200px; }
+.uc-expand-inner {
+  padding-top: 12px; margin-top: 12px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;
+}
+.uc-result {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #e8fde8; border-radius: 8px; padding: 4px 12px;
+  font-size: 0.8rem; color: #1a8c1a; margin-top: 8px;
+}
+.uc-filter {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;
+}
+.uc-filter button {
+  padding: 6px 16px; border-radius: 100px; border: 1px solid var(--card-border);
+  background: white; font-size: 0.85rem; font-weight: 500; cursor: pointer;
+  transition: all 0.2s; font-family: 'Montserrat', sans-serif;
+  color: var(--text-secondary);
+}
+.uc-filter button:hover, .uc-filter button.active {
+  background: var(--sun-orange); color: white; border-color: var(--sun-orange);
+}
+
+@media (max-width: 768px) {
+  .evo-track::before { left: 24px; }
+  .evo-stage { flex-direction: column; }
+  .evo-stage .evo-center {
+    width: 100%; flex-direction: row; gap: 12px;
+    padding: 0 0 12px 0; justify-content: flex-start;
+  }
+  .evo-stage .evo-left, .evo-stage .evo-right { padding: 0; }
+  .evo-stage-name { text-align: left; margin-top: 0; }
+}
+
+/* ====== KNOWLEDGE ====== */
+.k-tabs {
+  display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap;
+}
+.k-tab {
+  padding: 10px 20px; border-radius: 100px; border: 1px solid var(--card-border);
+  background: white; font-size: 0.9rem; font-weight: 600; cursor: pointer;
+  transition: all 0.2s; font-family: 'Montserrat', sans-serif;
+  color: var(--text-secondary);
+}
+.k-tab:hover, .k-tab.active {
+  background: var(--sun-orange); color: white; border-color: var(--sun-orange);
+}
+.k-panel { display: none; }
+.k-panel.active { display: block; }
+
+.k-compare {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--card-border); margin-bottom: 24px;
+}
+.k-compare-header {
+  padding: 14px 20px; font-weight: 700; font-size: 0.85rem; text-align: center;
+}
+.k-compare-header.low-h { background: #fff0e0; color: var(--carrot); }
+.k-compare-header.master-h { background: #e8fde8; color: #1a8c1a; }
+.k-compare-row {
+  display: contents;
+}
+.k-compare-cell {
+  padding: 14px 20px; font-size: 0.9rem; border-top: 1px solid rgba(0,0,0,0.05);
+  line-height: 1.5;
+}
+.k-compare-cell.low { color: var(--text-secondary); background: #fffcf8; }
+.k-compare-cell.master { color: var(--text); background: #fafff8; }
+
+.k-roi-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px; margin-top: 24px;
+}
+.k-roi-card {
+  background: white; border: 1px solid var(--card-border);
+  border-radius: var(--radius); padding: 20px; text-align: center;
+}
+.k-roi-card .activity { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 8px; }
+.k-roi-card .saving {
+  font-family: 'JetBrains Mono', monospace; font-size: 1.5rem;
+  font-weight: 700; color: var(--sun-orange);
+}
+.k-roi-card .detail { font-size: 0.8rem; color: var(--text-light); margin-top: 4px; }
+
+.k-ipo-flow {
+  display: flex; align-items: center; gap: 16px;
+  margin: 32px 0; justify-content: center; flex-wrap: wrap;
+}
+.k-ipo-box {
+  padding: 24px 32px; border-radius: var(--radius);
+  text-align: center; min-width: 160px;
+}
+.k-ipo-box.input { background: #e8f4fd; border: 2px solid #b8ddf5; }
+.k-ipo-box.process { background: #fff5e6; border: 2px solid var(--cyber-yellow); }
+.k-ipo-box.output { background: #e8fde8; border: 2px solid #b8f5c0; }
+.k-ipo-box .ipo-label {
+  font-family: 'Mali', cursive; font-weight: 700;
+  font-size: 1.1rem; margin-bottom: 4px;
+}
+.k-ipo-box .ipo-desc { font-size: 0.85rem; color: var(--text-secondary); }
+.k-ipo-arrow { font-size: 1.5rem; color: var(--sun-orange); }
+
+.k-block {
+  background: white; border: 1px solid var(--card-border);
+  border-radius: var(--radius); padding: 28px; margin-bottom: 20px;
+}
+.k-block h3 {
+  font-family: 'Mali', cursive; font-size: 1.1rem; font-weight: 700;
+  margin-bottom: 12px; color: var(--text);
+}
+.k-block p, .k-block li {
+  font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7;
+}
+.k-block ul { padding-left: 20px; }
+.k-block li { margin-bottom: 6px; }
+
+.k-platform-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+.k-platform {
+  background: white; border: 1px solid var(--card-border);
+  border-radius: var(--radius); padding: 20px; text-align: center;
+}
+.k-platform .name {
+  font-weight: 700; font-size: 1rem; margin-bottom: 4px;
+}
+.k-platform .desc { font-size: 0.85rem; color: var(--text-secondary); }
+.k-platform .best {
+  display: inline-block; margin-top: 8px; padding: 3px 12px;
+  background: #fff5e6; border-radius: 100px;
+  font-size: 0.75rem; font-weight: 600; color: var(--sun-orange);
+}
+
+/* ====== PRACTICE ====== */
+.pr-steps { display: flex; flex-direction: column; gap: 20px; }
+.pr-step {
+  display: flex; gap: 20px; align-items: flex-start;
+}
+.pr-step-num {
+  flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%;
+  background: var(--sun-orange); color: white;
+  font-weight: 700; font-size: 1.1rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.pr-step-content h3 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
+.pr-step-content p { font-size: 0.9rem; color: var(--text-secondary); }
+
+.pr-usecases {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px;
+  justify-content: center;
+}
+.pr-chip {
+  padding: 10px 20px; background: white; border: 1px solid var(--card-border);
+  border-radius: 100px; font-size: 0.9rem; color: var(--text-secondary);
+  font-weight: 500; transition: all 0.2s; cursor: default;
+}
+.pr-chip:hover { border-color: var(--sun-orange); color: var(--sun-orange); }
+
+/* ====== ROADMAP ====== */
+.rm-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+.rm-card {
+  background: white; border: 1px solid var(--card-border);
+  border-radius: var(--radius); padding: 28px;
+  transition: all 0.3s;
+}
+.rm-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(253,141,4,0.08); }
+.rm-card .rm-icon { font-size: 2rem; margin-bottom: 12px; }
+.rm-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+.rm-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+
+.rm-quote {
+  margin-top: 40px; padding: 24px 32px;
+  background: linear-gradient(135deg, #fff8f0, #fff3e0);
+  border-left: 4px solid var(--sun-orange);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.rm-quote p { font-size: 1.05rem; font-style: italic; color: var(--text); }
+.rm-quote .author { font-size: 0.85rem; color: var(--text-light); margin-top: 8px; font-style: normal; }
+
+/* ====== PLACEHOLDER SECTIONS ====== */
+.coming-soon {
+  text-align: center; padding: 60px 0;
+  color: var(--text-light); font-style: italic;
+}
+
+/* ====== FOOTER ====== */
+footer {
+  text-align: center; padding: 48px 24px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+footer p { color: var(--text-light); font-size: 0.85rem; }
+footer .brand {
+  font-family: 'Mali', cursive;
+  color: var(--sun-orange); font-weight: 700;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 640px) {
+  nav .nav-links { display: none; }
+  section { padding: 60px 0; }
+  .hero-stats { gap: 20px; }
+  .hero-stat .num { font-size: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="logo">Chasy</span>
+  <span class="dot"></span>
+  <span class="nav-title">AI Workshop</span>
+  <div class="nav-links">
+    <a href="#timeline">Tiến hóa</a>
+    <a href="#usecase">Kinh nghiệm</a>
+    <a href="#knowledge">Kiến thức</a>
+    <a href="#practice">Thực hành</a>
+    <a href="#next">Tiếp theo</a>
+  </div>
+</nav>
+
+<div class="content">
+
+<!-- ====== HERO ====== -->
+<section class="hero visible" id="top">
+  <div class="hero-eyebrow">
+    <span class="pulse"></span>
+    Workshop nội bộ — MKT & Nhân sự Chasy
+  </div>
+  <h1>
+    <span class="highlight">AI</span> làm được gì á?<br>
+    Để Xiu show cho coi <span class="emoji">😎</span>
+  </h1>
+  <p class="hero-sub">25 thứ sếp build bằng AI mà không viết 1 dòng code. Thật luôn.</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="num">25</div>
+      <div class="label">use case thật</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">2</div>
+      <div class="label">công ty</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">4</div>
+      <div class="label">tháng</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">0</div>
+      <div class="label">dòng code</div>
+    </div>
+  </div>
+  <a href="#timeline" class="hero-cta">Coi thử đi ↓</a>
+</section>
+
+<!-- ====== EVOLUTION TIMELINE ====== -->
+<section id="timeline">
+  <div class="section-label">02 — Tiến hóa</div>
+  <div class="section-title">Sự tiến hóa trong cách dùng AI</div>
+  <div class="section-subtitle">AI không yếu — skill của người dùng mới là vấn đề. Con người mới chỉ khai thác phần rất nhỏ sức mạnh AI.</div>
+
+  <div class="evo-message">
+    <div class="big-text">Cùng 1 công cụ AI — <span class="orange">cách dùng</span> quyết định kết quả</div>
+    <p>Giống như cùng 1 chiếc iPhone, người dùng để gọi điện, người dùng để quay phim chuyên nghiệp.</p>
+  </div>
+
+  <div class="evo-track">
+
+    <!-- STAGE 1: CHATBOT -->
+    <div class="evo-stage s1">
+      <div class="evo-left">
+        <div class="evo-card">
+          <h3>🌱 Low AI — Chatbot</h3>
+          <div class="evo-trait">
+            <div class="icon">💬</div>
+            <p><strong>Hỏi - Đáp rời rạc.</strong> Mỗi lần hỏi AI phải giải thích lại từ đầu, giống hỏi Google nhưng dài hơn.</p>
+          </div>
+          <div class="evo-trait">
+            <div class="icon">🎲</div>
+            <p><strong>Kết quả lúc được lúc không.</strong> Cùng 1 câu hỏi, hỏi 3 lần ra 3 kết quả khác nhau.</p>
+          </div>
+          <div class="evo-trait">
+            <div class="icon">🔄</div>
+            <p><strong>Copy-paste prompt.</strong> Không có quy trình, mỗi người hỏi 1 kiểu, không ai dùng lại được.</p>
+          </div>
+          <div class="evo-example">
+            <div class="ex-label">Ví dụ thực tế</div>
+            "Viết cho tui 1 bài caption về sản phẩm mới" → AI viết chung chung, không đúng tone Chasy, phải sửa 5-6 lần.
+          </div>
+        </div>
+      </div>
+      <div class="evo-center">
+        <div class="evo-node">🌱</div>
+        <div class="evo-stage-name">Low AI</div>
+      </div>
+      <div class="evo-right"></div>
+    </div>
+
+    <div class="evo-arrow-down">↓</div>
+
+    <!-- STAGE 2: GIAO VIỆC CÓ Ý THỨC -->
+    <div class="evo-stage s2">
+      <div class="evo-left"></div>
+      <div class="evo-center">
+        <div class="evo-node">⚡</div>
+        <div class="evo-stage-name">Dùng AI<br>có ý thức</div>
+      </div>
+      <div class="evo-right">
+        <div class="evo-card">
+          <h3>⚡ Giao việc rõ ràng — AI ra kết quả dùng được</h3>
+          <div class="evo-trait">
+            <div class="icon">📋</div>
+            <p><strong>Cho context đầy đủ.</strong> Nói rõ: bạn là ai, muốn gì, kết quả trông như thế nào, giọng văn ra sao.</p>
+          </div>
+          <div class="evo-trait">
+            <div class="icon">🎯</div>
+            <p><strong>Prompt có cấu trúc.</strong> Vai trò → Nhiệm vụ → Yêu cầu cụ thể → Ví dụ mẫu. Kết quả đúng 70-80% ngay lần đầu.</p>
+          </div>
+          <div class="evo-trait">
+            <div class="icon">💡</div>
+            <p><strong>Biết feedback lại.</strong> Không chấp nhận kết quả dở — biết chỉnh, bổ sung, yêu cầu AI làm lại đúng ý.</p>
+          </div>
+          <div class="evo-example">
+            <div class="ex-label">Ví dụ thực tế</div>
+            "Bạn là content writer cho Chasy — thương hiệu đồ ăn vặt GenZ. Viết caption ra mắt snack mới, tone vui vẻ, dưới 150 từ, có CTA." → Dùng được luôn, chỉ chỉnh nhẹ.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="evo-arrow-down">↓</div>
+
+    <!-- STAGE 3: MASTER AI — AGENT -->
+    <div class="evo-stage s3">
+      <div class="evo-left">
+        <div class="evo-card">
+          <h3>🚀 Master AI — AI Agent</h3>
+          <div class="evo-trait">
+            <div class="icon">🧠</div>
+            <p><strong>AI có nhân cách (Agent.md).</strong> AI biết mình là ai, làm việc cho ai, theo quy tắc gì — không cần nhắc lại mỗi lần.</p>
+          </div>
+          <div class="evo-trait">
+            <div class="icon">⚙️</div>
+            <p><strong>AI có kỹ năng (Skill.md).</strong> Đóng gói quy trình thành "skill" — AI học 1 lần, dùng mãi. Ai cũng chạy được.</p>
+          </div>
+          <div class="evo-trait">
+            <div class="icon">🔗</div>
+            <p><strong>Kết nối nhiều app (MCP).</strong> AI không chỉ chat — AI đọc file, viết code, điều khiển máy tính, kết nối Google Drive, Lark, Telegram...</p>
+          </div>
+          <div class="evo-trait">
+            <div class="icon">🏗️</div>
+            <p><strong>Build công cụ không cần code.</strong> Web app, bot, dashboard, hệ thống tự động — AI build, người dùng chỉ cần mô tả.</p>
+          </div>
+          <div class="evo-example">
+            <div class="ex-label">Ví dụ thực tế — Jinxiu đang ở đây</div>
+            AI Agent của Xiu biết brand Chasy, biết cách viết PP, biết IPO framework. Xiu nói "viết PP cho vị trí Sale Admin" → ra PP hoàn chỉnh trong 15 phút, đúng chuẩn công ty, có mốc 30/60/90 ngày. Không cần giải thích lại.
+          </div>
+        </div>
+      </div>
+      <div class="evo-center">
+        <div class="evo-node">🚀</div>
+        <div class="evo-stage-name">Master AI</div>
+      </div>
+      <div class="evo-right"></div>
+    </div>
+  </div>
+
+  <div class="evo-bottom-message">
+    <p>Bạn đang ở đâu trên hành trình này? <span class="you">Hôm nay mình cùng tiến lên.</span></p>
+  </div>
+</section>
+
+<!-- ====== USE CASES — Chia sẻ kinh nghiệm ====== -->
+<section id="usecase" style="background: var(--section-alt); margin: 0 -24px; padding-left: 24px; padding-right: 24px;">
+  <div class="section-label">03 — Chia sẻ</div>
+  <div class="section-title">25 Use Case thật của Xiu</div>
+  <div class="section-subtitle">Không lý thuyết — đây là những gì Xiu đã build bằng AI trong 4 tháng qua. Click để xem chi tiết.</div>
+
+  <div class="uc-filter">
+    <button class="active" onclick="filterUC('all', this)">Tất cả</button>
+    <button onclick="filterUC('chat', this)">Chat & Tư duy</button>
+    <button onclick="filterUC('code', this)">Code & Automation</button>
+    <button onclick="filterUC('web', this)">Tạo file & Web</button>
+    <button onclick="filterUC('skill', this)">Custom Skill</button>
+  </div>
+
+  <div class="uc-grid">
+    <div class="uc-card" data-type="chat" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>Growth Profile Vy Nhung & Lan Vy</h4>
+      <p>Đánh giá năng lực + lộ trình phát triển cá nhân</p>
+      <div class="uc-expand"><div class="uc-expand-inner">AI phân tích điểm mạnh/yếu cụ thể, đề xuất action plan theo từng người.<div class="uc-result">✅ Nhân viên biết rõ cần phát triển gì</div></div></div>
+    </div>
+    <div class="uc-card" data-type="chat" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>PP HR Connector, Sale Admin, TP KD</h4>
+      <p>Performance Profile cho 3 vị trí — kỳ vọng rõ từ ngày 1</p>
+      <div class="uc-expand"><div class="uc-expand-inner">PP gắn chiến lược thực tế, tiêu chí đo được theo mốc 30/60/90 ngày.<div class="uc-result">✅ Tuyển đúng người, onboard nhanh</div></div></div>
+    </div>
+    <div class="uc-card" data-type="chat" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>MTCV + Onboarding Sale Admin</h4>
+      <p>Từ PP sinh mô tả công việc + lịch onboarding 30 ngày</p>
+      <div class="uc-expand"><div class="uc-expand-inner">Nhân viên ký MTCV ngày đầu, manager có lịch onboarding chi tiết.<div class="uc-result">✅ Onboarding có hệ thống</div></div></div>
+    </div>
+    <div class="uc-card" data-type="chat" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>Manager README Framework</h4>
+      <p>Viết "user manual" cho sếp — team hiểu cách làm việc cùng</p>
+      <div class="uc-expand"><div class="uc-expand-inner">Team đọc xong biết sếp thích giao tiếp kiểu gì, kỳ vọng gì, pet peeves là gì.<div class="uc-result">✅ Giảm miscommunication</div></div></div>
+    </div>
+    <div class="uc-card" data-type="chat" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>360-degree Survey</h4>
+      <p>Thiết kế khảo sát đánh giá 360 cho tổ chức</p>
+      <div class="uc-expand"><div class="uc-expand-inner">AI thiết kế câu hỏi survey chuẩn, phân tích kết quả tự động.<div class="uc-result">✅ Feedback minh bạch, có data</div></div></div>
+    </div>
+    <div class="uc-card" data-type="chat" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>OKR 2026 An Quyên</h4>
+      <p>Mục tiêu chiến lược cả năm, có Key Results đo được</p>
+      <div class="uc-expand"><div class="uc-expand-inner">OKR theo framework chuẩn, gắn chiến lược công ty, metric rõ ràng.<div class="uc-result">✅ OKR hoàn chỉnh trong 1 buổi</div></div></div>
+    </div>
+    <div class="uc-card" data-type="chat" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>Lộ trình 60 ngày tái cấu trúc</h4>
+      <p>Tái cấu trúc tổ chức — timeline chi tiết từng tuần</p>
+      <div class="uc-expand"><div class="uc-expand-inner">Phân công trách nhiệm, checkpoint đánh giá, không bị loạn.<div class="uc-result">✅ Roadmap rõ ràng</div></div></div>
+    </div>
+    <div class="uc-card" data-type="chat" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>Phân tích chi phí nhân sự</h4>
+      <p>BP kế toán 34.9% quỹ lương — hợp lý không?</p>
+      <div class="uc-expand"><div class="uc-expand-inner">Benchmark industry standard, key-person risk, đề xuất cấu trúc lại.<div class="uc-result">✅ Quyết định từ data, không cảm tính</div></div></div>
+    </div>
+    <div class="uc-card" data-type="chat" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>Pricing kênh Online</h4>
+      <p>Định giá sản phẩm trên từng kênh bán hàng</p>
+      <div class="uc-expand"><div class="uc-expand-inner">So sánh margin theo kênh, chiến lược giá phù hợp từng platform.<div class="uc-result">✅ Pricing strategy có data backup</div></div></div>
+    </div>
+    <div class="uc-card" data-type="chat" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>Phân tích cấu trúc kênh bán</h4>
+      <p>Đánh giá hiệu quả từng kênh phân phối</p>
+      <div class="uc-expand"><div class="uc-expand-inner">AI phân tích revenue, margin, growth rate theo từng kênh.<div class="uc-result">✅ Biết kênh nào scale, kênh nào cắt</div></div></div>
+    </div>
+    <div class="uc-card" data-type="chat" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>AI Capability Building Framework</h4>
+      <p>Framework xây năng lực AI cho cả tổ chức</p>
+      <div class="uc-expand"><div class="uc-expand-inner">Dùng AI để xây framework dạy người khác dùng AI. Meta level.<div class="uc-result">✅ Cả công ty nâng level</div></div></div>
+    </div>
+    <div class="uc-card" data-type="chat" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>Agentic AI Principles</h4>
+      <p>Nguyên tắc để AI hoạt động như agent tự chủ</p>
+      <div class="uc-expand"><div class="uc-expand-inner">AI hiểu ngữ cảnh, nhớ quy trình, tự đề xuất bước tiếp theo.<div class="uc-result">✅ AI từ "công cụ" thành "đồng nghiệp"</div></div></div>
+    </div>
+    <div class="uc-card" data-type="chat" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>Cấu trúc Lark Group 4-tier</h4>
+      <p>Tổ chức lại nhóm chat Lark theo 4 tầng logic</p>
+      <div class="uc-expand"><div class="uc-expand-inner">Công ty → Phòng ban → Dự án → Task, không bị loạn tin nhắn.<div class="uc-result">✅ Thông tin đúng người, đúng chỗ</div></div></div>
+    </div>
+    <div class="uc-card" data-type="code" onclick="this.classList.toggle('open')">
+      <span class="uc-badge code">Code</span>
+      <h4>Đối soát VTP v1.1</h4>
+      <p>Đối soát đơn hàng vận chuyển tự động</p>
+      <div class="uc-expand"><div class="uc-expand-inner">Script tự động so khớp data, flag sai lệch, xuất báo cáo.<div class="uc-result">✅ Từ 1 ngày → 10 phút</div></div></div>
+    </div>
+    <div class="uc-card" data-type="code" onclick="this.classList.toggle('open')">
+      <span class="uc-badge code">Code</span>
+      <h4>Điều phối đơn hàng</h4>
+      <p>Hệ thống tự phân bổ đơn theo kho, vùng, carrier</p>
+      <div class="uc-expand"><div class="uc-expand-inner">Logic điều phối: đơn nào giao kho nào, carrier nào rẻ nhất, auto notify.<div class="uc-result">✅ Giảm sai sót, nhanh hơn 5x</div></div></div>
+    </div>
+    <div class="uc-card" data-type="code" onclick="this.classList.toggle('open')">
+      <span class="uc-badge code">Code</span>
+      <h4>Bot Telegram "Trợ lý AQ"</h4>
+      <p>Bot nhắn nhở, gửi báo cáo tự động qua Telegram</p>
+      <div class="uc-expand"><div class="uc-expand-inner">AI build bot từ A-Z: nhận lệnh, xử lý data, gửi kết quả.<div class="uc-result">✅ Trợ lý ảo riêng, chạy 24/7</div></div></div>
+    </div>
+    <div class="uc-card" data-type="web" onclick="this.classList.toggle('open')">
+      <span class="uc-badge web">Web</span>
+      <h4>Manager README Website</h4>
+      <p>Trang web cá nhân — deploy lên Vercel</p>
+      <div class="uc-expand"><div class="uc-expand-inner">AI viết toàn bộ HTML/CSS/JS. 0 dòng code viết tay. Có animation, responsive.<div class="uc-result">✅ readme-jinxiu.vercel.app</div></div></div>
+    </div>
+    <div class="uc-card" data-type="web" onclick="this.classList.toggle('open')">
+      <span class="uc-badge web">Web</span>
+      <h4>Ma Trận Ứng Dụng AI</h4>
+      <p>Bản đồ visual tất cả cách dùng AI</p>
+      <div class="uc-expand"><div class="uc-expand-inner">Web interactive: click từng ô thấy chi tiết, phân theo tính năng và mức độ.<div class="uc-result">✅ Nhìn 1 phát hiểu AI làm gì</div></div></div>
+    </div>
+    <div class="uc-card" data-type="web" onclick="this.classList.toggle('open')">
+      <span class="uc-badge web">Web</span>
+      <h4>Playbook Hub / Két Sắt Tri Thức</h4>
+      <p>Lưu trữ quy trình, framework, kinh nghiệm công ty</p>
+      <div class="uc-expand"><div class="uc-expand-inner">Đóng gói kinh nghiệm thành tài liệu ai cũng tra cứu được.<div class="uc-result">✅ Tri thức không mất khi người đi</div></div></div>
+    </div>
+    <div class="uc-card" data-type="skill" onclick="this.classList.toggle('open')">
+      <span class="uc-badge skill">Skill</span>
+      <h4>PP Builder Skill</h4>
+      <p>Dạy AI viết Performance Profile tự động</p>
+      <div class="uc-expand"><div class="uc-expand-inner">Đóng gói kinh nghiệm thành skill — AI học 1 lần, dùng mãi.<div class="uc-result">✅ Từ 1 ngày → 15 phút viết PP</div></div></div>
+    </div>
+    <div class="uc-card" data-type="skill" onclick="this.classList.toggle('open')">
+      <span class="uc-badge skill">Skill</span>
+      <h4>MTCV + Onboarding Generator</h4>
+      <p>Từ PP → tự động sinh MTCV + lịch onboarding 30 ngày</p>
+      <div class="uc-expand"><div class="uc-expand-inner">Pipeline hoàn chỉnh: PP → MTCV → Onboarding. End-to-end.<div class="uc-result">✅ Quy trình tuyển dụng tự động</div></div></div>
+    </div>
+    <div class="uc-card" data-type="skill" onclick="this.classList.toggle('open')">
+      <span class="uc-badge skill">Skill</span>
+      <h4>IPO Output Designer</h4>
+      <p>Skill kiểm tra chất lượng output — hỏi ngược 5 câu</p>
+      <div class="uc-expand"><div class="uc-expand-inner">Framework IPO: Input → Process → Output. Hỏi đúng trước khi làm.<div class="uc-result">✅ Output đúng 80-90% lần đầu</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== KNOWLEDGE ====== -->
+<section id="knowledge">
+  <div class="section-label">04 — Kiến thức</div>
+  <div class="section-title">Hiểu AI đúng cách</div>
+  <div class="section-subtitle">Kiến thức nền tảng để dùng AI hiệu quả — không hàn lâm, toàn ví dụ thực tế.</div>
+
+  <div class="k-tabs">
+    <button class="k-tab active" onclick="showKTab('prompt-vs-agent', this)">Prompt vs Agent</button>
+    <button class="k-tab" onclick="showKTab('roi', this)">ROI tiết kiệm</button>
+    <button class="k-tab" onclick="showKTab('ipo', this)">IPO Framework</button>
+    <button class="k-tab" onclick="showKTab('platforms', this)">So sánh AI</button>
+    <button class="k-tab" onclick="showKTab('tips', this)">Tips prompting</button>
+  </div>
+
+  <!-- TAB 1: Prompt vs Agent -->
+  <div class="k-panel active" id="kp-prompt-vs-agent">
+    <div class="k-block">
+      <h3>Prompt rời rạc vs AI Agent — khác nhau ở đâu?</h3>
+      <p>Hầu hết mọi người đang dùng AI kiểu "hỏi rồi quên". AI Agent là bước tiến hóa tiếp theo.</p>
+    </div>
+    <div class="k-compare">
+      <div class="k-compare-header low-h">Prompt rời rạc</div>
+      <div class="k-compare-header master-h">AI Agent</div>
+      <div class="k-compare-cell low">Mỗi lần hỏi phải giải thích lại context</div>
+      <div class="k-compare-cell master">AI nhớ context, biết bạn là ai, làm gì</div>
+      <div class="k-compare-cell low">Kết quả lúc được lúc không</div>
+      <div class="k-compare-cell master">Kết quả ổn định, đúng chuẩn mỗi lần</div>
+      <div class="k-compare-cell low">Không có quy trình, ai hỏi kiểu nấy</div>
+      <div class="k-compare-cell master">Có skill/quy trình — ai cũng chạy được</div>
+      <div class="k-compare-cell low">Không tái sử dụng được</div>
+      <div class="k-compare-cell master">Dùng lại, chia sẻ, nhân rộng cho team</div>
+      <div class="k-compare-cell low">Chỉ 1 người biết dùng</div>
+      <div class="k-compare-cell master">Onboard nhân viên mới dùng ngay</div>
+      <div class="k-compare-cell low">Mất 15-30 phút mỗi lần</div>
+      <div class="k-compare-cell master">5 phút hoặc tự động hoàn toàn</div>
+    </div>
+    <div class="k-block">
+      <h3>Ví dụ Chasy</h3>
+      <p><strong>Prompt rời rạc:</strong> "Viết email cho đối tác" → AI viết generic, phải sửa 5 lần, lần sau hỏi lại từ đầu.</p>
+      <p style="margin-top: 8px;"><strong>AI Agent:</strong> AI đã biết tone Chasy, biết đối tác là ai, biết format email chuẩn → ra email dùng được luôn. Lần sau chỉ cần nói "viết email cho đối tác B về vấn đề X".</p>
+    </div>
+  </div>
+
+  <!-- TAB 2: ROI -->
+  <div class="k-panel" id="kp-roi">
+    <div class="k-block">
+      <h3>Tiết kiệm bao nhiêu thời gian?</h3>
+      <p>Data thực tế từ các hoạt động Jinxiu đã đo — trung bình tiết kiệm 70-85% thời gian.</p>
+    </div>
+    <div class="k-roi-grid">
+      <div class="k-roi-card">
+        <div class="activity">Viết content MKT</div>
+        <div class="saving">-80%</div>
+        <div class="detail">3 tiếng → 30 phút</div>
+      </div>
+      <div class="k-roi-card">
+        <div class="activity">Research thị trường</div>
+        <div class="saving">-85%</div>
+        <div class="detail">Nửa ngày → 15 phút</div>
+      </div>
+      <div class="k-roi-card">
+        <div class="activity">Viết Performance Profile</div>
+        <div class="saving">-90%</div>
+        <div class="detail">1 ngày → 15 phút</div>
+      </div>
+      <div class="k-roi-card">
+        <div class="activity">Đối soát đơn hàng</div>
+        <div class="saving">-95%</div>
+        <div class="detail">1 ngày → 10 phút</div>
+      </div>
+      <div class="k-roi-card">
+        <div class="activity">Phân tích data</div>
+        <div class="saving">-75%</div>
+        <div class="detail">Nửa ngày → 1 tiếng</div>
+      </div>
+      <div class="k-roi-card">
+        <div class="activity">Viết email đối tác</div>
+        <div class="saving">-70%</div>
+        <div class="detail">25 phút → 8 phút</div>
+      </div>
+      <div class="k-roi-card">
+        <div class="activity">Lên kế hoạch tuần</div>
+        <div class="saving">-65%</div>
+        <div class="detail">45 phút → 15 phút</div>
+      </div>
+      <div class="k-roi-card">
+        <div class="activity">Build web app</div>
+        <div class="saving">-90%</div>
+        <div class="detail">2 tuần → 2 buổi tối</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 3: IPO -->
+  <div class="k-panel" id="kp-ipo">
+    <div class="k-block">
+      <h3>IPO Framework — Tư duy trước khi giao việc cho AI</h3>
+      <p>Đây là framework Jinxiu tự phát triển. Trước khi nhờ AI làm bất kỳ thứ gì, hỏi 3 câu này:</p>
+    </div>
+
+    <div class="k-ipo-flow">
+      <div class="k-ipo-box input">
+        <div class="ipo-label">Input</div>
+        <div class="ipo-desc">AI cần biết gì<br>để làm được?</div>
+      </div>
+      <div class="k-ipo-arrow">→</div>
+      <div class="k-ipo-box process">
+        <div class="ipo-label">Process</div>
+        <div class="ipo-desc">AI cần làm theo<br>quy trình nào?</div>
+      </div>
+      <div class="k-ipo-arrow">→</div>
+      <div class="k-ipo-box output">
+        <div class="ipo-label">Output</div>
+        <div class="ipo-desc">Kết quả cần<br>trông như thế nào?</div>
+      </div>
+    </div>
+
+    <div class="k-block">
+      <h3>Ví dụ: Viết PP cho vị trí Sale Admin</h3>
+      <ul>
+        <li><strong>Input:</strong> Tên vị trí, phòng ban, chiến lược công ty, kỳ vọng của trưởng phòng</li>
+        <li><strong>Process:</strong> Phân tích yêu cầu → Xác định KPI → Chia mốc 30/60/90 ngày → Format chuẩn PP</li>
+        <li><strong>Output:</strong> File PP hoàn chỉnh, có đo được, trưởng phòng không cần sửa lại</li>
+      </ul>
+    </div>
+
+    <div class="k-block">
+      <h3>Tại sao IPO quan trọng?</h3>
+      <p>Hầu hết người dùng AI chỉ nói <strong>"làm cái này cho tui"</strong> mà không cho AI biết input đầy đủ, không mô tả process, không define output chuẩn. Kết quả: AI đoán mò → output dở → người dùng kết luận "AI dở".</p>
+      <p style="margin-top: 8px;">Thực tế: <strong>AI không dở. Cách giao việc mới dở.</strong> IPO giải quyết đúng vấn đề này.</p>
+    </div>
+  </div>
+
+  <!-- TAB 4: So sánh nền tảng -->
+  <div class="k-panel" id="kp-platforms">
+    <div class="k-block">
+      <h3>4 nền tảng AI phổ biến — dùng cái nào?</h3>
+      <p>Không có "AI tốt nhất" — chỉ có AI phù hợp nhất cho từng việc.</p>
+    </div>
+    <div class="k-platform-grid">
+      <div class="k-platform">
+        <div class="name">Claude</div>
+        <div class="desc">Tư duy sâu, viết dài, xử lý tài liệu phức tạp, build agent</div>
+        <div class="best">Jinxiu dùng chính</div>
+      </div>
+      <div class="k-platform">
+        <div class="name">ChatGPT</div>
+        <div class="desc">Đa năng, có GPTs store, tích hợp DALL-E tạo hình</div>
+        <div class="best">Phổ biến nhất</div>
+      </div>
+      <div class="k-platform">
+        <div class="name">Gemini</div>
+        <div class="desc">Tích hợp Google (Docs, Sheets, Gmail), search mạnh</div>
+        <div class="best">Hệ sinh thái Google</div>
+      </div>
+      <div class="k-platform">
+        <div class="name">Grok</div>
+        <div class="desc">Tích hợp X (Twitter), realtime data, tone thoải mái</div>
+        <div class="best">Xu hướng & mạng xã hội</div>
+      </div>
+    </div>
+    <div class="k-block" style="margin-top: 20px;">
+      <h3>Lời khuyên của Xiu</h3>
+      <p>Bắt đầu với <strong>1 tool</strong>, dùng thật sâu, rồi mới mở rộng. Đừng nhảy qua nhảy lại — giống như học 4 ngôn ngữ cùng lúc, cuối cùng không giỏi cái nào.</p>
+    </div>
+  </div>
+
+  <!-- TAB 5: Tips prompting -->
+  <div class="k-panel" id="kp-tips">
+    <div class="k-block">
+      <h3>4 kỹ thuật prompting thực tế cho team Chasy</h3>
+      <p>Không cần nhớ hết — chỉ cần 4 cái này là đủ dùng.</p>
+    </div>
+    <div class="k-block">
+      <h3>1. Cho vai trò (Role Prompting)</h3>
+      <p>"Bạn là content writer cho Chasy — thương hiệu đồ ăn vặt GenZ Việt Nam."</p>
+      <p style="margin-top: 4px; color: var(--sun-orange); font-weight: 600;">Tại sao: AI viết khác hoàn toàn khi biết mình đang "đóng vai" ai.</p>
+    </div>
+    <div class="k-block">
+      <h3>2. Cho ví dụ mẫu (Few-shot)</h3>
+      <p>"Đây là 2 email trước mà sếp đã duyệt. Viết email mới theo đúng tone và format này."</p>
+      <p style="margin-top: 4px; color: var(--sun-orange); font-weight: 600;">Tại sao: 1 ví dụ tốt hơn 100 từ mô tả.</p>
+    </div>
+    <div class="k-block">
+      <h3>3. Chia nhỏ việc (Chain of Thought)</h3>
+      <p>"Bước 1: Phân tích data → Bước 2: Tìm pattern → Bước 3: Đề xuất action → Bước 4: Viết báo cáo."</p>
+      <p style="margin-top: 4px; color: var(--sun-orange); font-weight: 600;">Tại sao: AI làm từng bước chính xác hơn làm tất cả 1 lần.</p>
+    </div>
+    <div class="k-block">
+      <h3>4. Nói rõ KHÔNG muốn gì</h3>
+      <p>"Không dùng từ 'synergy', 'leverage'. Không viết quá 150 từ. Không dùng bullet points."</p>
+      <p style="margin-top: 4px; color: var(--sun-orange); font-weight: 600;">Tại sao: AI rất giỏi tuân theo giới hạn — nếu bạn nói rõ.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== PRACTICE ====== -->
+<section id="practice" style="background: var(--section-alt); margin: 0 -24px; padding-left: 24px; padding-right: 24px;">
+  <div class="section-label">05 — Thực hành</div>
+  <div class="section-title">Thử ngay tại đây</div>
+  <div class="section-subtitle">Lý thuyết 30 phút, thực hành 2 tiếng. Mở laptop ra và thử luôn.</div>
+
+  <div class="pr-steps">
+    <div class="pr-step">
+      <div class="pr-step-num">1</div>
+      <div class="pr-step-content">
+        <h3>Chọn 1 việc bạn làm lặp lại mỗi tuần</h3>
+        <p>Viết email, tổng hợp báo cáo, soạn content, trả lời khách hàng... Bất kỳ việc "mất thời gian nhưng không khó".</p>
+      </div>
+    </div>
+    <div class="pr-step">
+      <div class="pr-step-num">2</div>
+      <div class="pr-step-content">
+        <h3>Dùng IPO để giao việc cho AI</h3>
+        <p>Input: AI cần biết gì? → Process: Làm theo bước nào? → Output: Kết quả trông ra sao?</p>
+      </div>
+    </div>
+    <div class="pr-step">
+      <div class="pr-step-num">3</div>
+      <div class="pr-step-content">
+        <h3>Thử và feedback — không cần đúng lần đầu</h3>
+        <p>AI giống con người — lần đầu có thể chưa đúng ý. Nói lại cho rõ hơn, AI sẽ điều chỉnh.</p>
+      </div>
+    </div>
+    <div class="pr-step">
+      <div class="pr-step-num">4</div>
+      <div class="pr-step-content">
+        <h3>Share kết quả — mọi người cùng giao lưu</h3>
+        <p>Show cho team xem bạn đã làm gì. Hỏi han, góp ý, học từ nhau.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pr-usecases">
+    <span class="pr-chip">📧 Viết email đối tác</span>
+    <span class="pr-chip">📊 Phân tích data bán hàng</span>
+    <span class="pr-chip">📝 Soạn content MKT</span>
+    <span class="pr-chip">📋 Tóm tắt meeting notes</span>
+    <span class="pr-chip">🎯 Lên kế hoạch tuần</span>
+    <span class="pr-chip">💡 Brainstorm ý tưởng</span>
+    <span class="pr-chip">📄 Viết brief cho dự án</span>
+    <span class="pr-chip">🔍 Research đối thủ</span>
+  </div>
+</section>
+
+<!-- ====== ROADMAP ====== -->
+<section id="next">
+  <div class="section-label">06 — Sau workshop</div>
+  <div class="section-title">Đi tiếp thế nào?</div>
+  <div class="section-subtitle">Workshop chỉ là bước đầu. Đây là lộ trình để bạn tiếp tục.</div>
+
+  <div class="rm-grid">
+    <div class="rm-card">
+      <div class="rm-icon">🌱</div>
+      <h3>Tuần 1: Thử mỗi ngày 1 việc</h3>
+      <p>Chọn 1 việc đơn giản nhất và thử dùng AI. Không cần hoàn hảo, chỉ cần bắt đầu. Mỗi ngày 1 prompt, 5 phút.</p>
+    </div>
+    <div class="rm-card">
+      <div class="rm-icon">📈</div>
+      <h3>Tuần 2-3: Tìm pattern</h3>
+      <p>Nhận ra việc nào AI làm tốt, việc nào cần mình. Bắt đầu lưu lại các prompt hiệu quả — đó là "skill" đầu tiên của bạn.</p>
+    </div>
+    <div class="rm-card">
+      <div class="rm-icon">🚀</div>
+      <h3>Tháng 2+: Build hệ thống</h3>
+      <p>Từ prompt rời rạc → đóng gói thành quy trình. Team dùng chung, kết quả đồng nhất. Bạn đã lên level "Dùng AI có ý thức".</p>
+    </div>
+  </div>
+
+  <div class="rm-quote">
+    <p>"Đầu tư 3 giờ xây skill → tiết kiệm 2-3 giờ mỗi tuần, vĩnh viễn."</p>
+    <div class="author">— Từ kinh nghiệm thực tế của Jinxiu</div>
+  </div>
+</section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>Made with 🧡 by <span class="brand">Jinxiu × Chasy</span> — Powered by AI</p>
+  <p style="margin-top: 6px; font-size: 0.78rem;">Chính trang web này cũng được build bằng AI. Đó là minh chứng.</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('section:not(.hero)').forEach(s => observer.observe(s));
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// Knowledge tabs
+function showKTab(id, btn) {
+  document.querySelectorAll('.k-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.k-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('kp-' + id).classList.add('active');
+}
+
+// Use case filter
+function filterUC(type, btn) {
+  document.querySelectorAll('.uc-filter button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.uc-card').forEach(card => {
+    if (type === 'all' || card.dataset.type === type) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+</script>
+
+</body>
+</html>
