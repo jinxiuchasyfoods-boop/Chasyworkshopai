@@ -13,14 +13,12 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  /* Chasy Brand Colors */
   --sun-orange: #FD8D04;
   --cyber-yellow: #FCCC13;
   --butter-yellow: #FEE9A1;
   --bright-red: #E41E26;
   --carrot: #F36F40;
   --bright-white: #F4F5F0;
-  /* Functional */
   --bg: var(--bright-white);
   --text: #1a1a1a;
   --text-secondary: #5a5a5a;
@@ -44,7 +42,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ====== LAYOUT ====== */
 .content { max-width: 960px; margin: 0 auto; padding: 0 24px; }
 
 section {
@@ -54,7 +51,7 @@ section {
 }
 section.visible { opacity: 1; transform: translateY(0); }
 
-/* ====== NAV ====== */
+/* NAV */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   padding: 14px 24px;
@@ -62,20 +59,17 @@ nav {
   border-bottom: 1px solid rgba(0,0,0,0.06);
   display: flex; align-items: center; gap: 12px;
 }
-nav .logo {
-  font-family: 'Mali', cursive;
-  font-weight: 700; color: var(--sun-orange); font-size: 1.15rem;
-}
+nav .logo { font-family: 'Mali', cursive; font-weight: 700; color: var(--sun-orange); font-size: 1.15rem; }
 nav .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyber-yellow); }
 nav .nav-title { font-size: 0.85rem; color: var(--text-light); font-weight: 500; }
-nav .nav-links { margin-left: auto; display: flex; gap: 24px; }
+nav .nav-links { margin-left: auto; display: flex; gap: 20px; }
 nav .nav-links a {
-  color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;
+  color: var(--text-secondary); text-decoration: none; font-size: 0.8rem;
   font-weight: 500; transition: color 0.3s;
 }
 nav .nav-links a:hover { color: var(--sun-orange); }
 
-/* ====== HERO ====== */
+/* HERO */
 .hero {
   min-height: 100vh; display: flex; flex-direction: column;
   justify-content: center; align-items: center; text-align: center;
@@ -118,12 +112,8 @@ nav .nav-links a:hover { color: var(--sun-orange); }
   font-weight: 700; color: var(--text);
   margin-bottom: 20px; position: relative; z-index: 1;
 }
-.hero h1 .highlight {
-  color: var(--sun-orange);
-}
-.hero h1 .emoji {
-  display: inline-block; animation: wave 2s ease-in-out infinite;
-}
+.hero h1 .highlight { color: var(--sun-orange); }
+.hero h1 .emoji { display: inline-block; animation: wave 2s ease-in-out infinite; }
 @keyframes wave {
   0%, 100% { transform: rotate(0deg); }
   25% { transform: rotate(15deg); }
@@ -136,21 +126,13 @@ nav .nav-links a:hover { color: var(--sun-orange); }
   position: relative; z-index: 1;
 }
 
-.hero-stats {
-  display: flex; gap: 32px; margin-bottom: 40px;
-  position: relative; z-index: 1;
-}
-.hero-stat {
-  text-align: center;
-}
+.hero-stats { display: flex; gap: 32px; margin-bottom: 40px; position: relative; z-index: 1; }
+.hero-stat { text-align: center; }
 .hero-stat .num {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 2rem; font-weight: 700; color: var(--sun-orange);
-  line-height: 1.2;
+  font-size: 2rem; font-weight: 700; color: var(--sun-orange); line-height: 1.2;
 }
-.hero-stat .label {
-  font-size: 0.8rem; color: var(--text-light); font-weight: 500;
-}
+.hero-stat .label { font-size: 0.8rem; color: var(--text-light); font-weight: 500; }
 
 .hero-cta {
   display: inline-flex; align-items: center; gap: 10px;
@@ -167,7 +149,7 @@ nav .nav-links a:hover { color: var(--sun-orange); }
   box-shadow: 0 8px 30px rgba(253,141,4,0.35);
 }
 
-/* ====== SECTION HEADERS ====== */
+/* SECTION HEADERS */
 .section-label {
   font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;
   color: var(--sun-orange); font-weight: 600; letter-spacing: 2px;
@@ -176,15 +158,62 @@ nav .nav-links a:hover { color: var(--sun-orange); }
 .section-title {
   font-family: 'Mali', cursive;
   font-size: clamp(1.8rem, 3.5vw, 2.5rem); line-height: 1.3;
-  font-weight: 700; color: var(--text);
-  margin-bottom: 12px;
+  font-weight: 700; color: var(--text); margin-bottom: 12px;
 }
 .section-subtitle {
   font-size: 1.05rem; color: var(--text-secondary);
   max-width: 600px; margin-bottom: 48px;
 }
 
-/* ====== EVOLUTION TIMELINE ====== */
+/* CLAUDE TIMELINE */
+.claude-tl { position: relative; padding-left: 40px; }
+.claude-tl::before {
+  content: ''; position: absolute; left: 14px; top: 0; bottom: 0;
+  width: 3px; background: linear-gradient(to bottom, rgba(253,141,4,0.15), var(--sun-orange));
+}
+.claude-tl-item {
+  position: relative; margin-bottom: 20px; padding: 16px 20px;
+  background: var(--card-bg); border: 1px solid var(--card-border);
+  border-radius: var(--radius); transition: all 0.3s;
+}
+.claude-tl-item:hover { box-shadow: 0 4px 16px rgba(253,141,4,0.1); transform: translateX(4px); }
+.claude-tl-item::before {
+  content: ''; position: absolute; left: -33px; top: 20px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--bg); border: 3px solid var(--sun-orange);
+}
+.claude-tl-item.current { border-color: var(--sun-orange); background: #fff8f0; }
+.claude-tl-item.current::before { background: var(--sun-orange); box-shadow: 0 0 12px rgba(253,141,4,0.4); }
+.claude-tl-date {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+  color: var(--sun-orange); font-weight: 600; margin-bottom: 2px;
+}
+.claude-tl-title { font-weight: 700; font-size: 0.95rem; color: var(--text); }
+.claude-tl-desc { font-size: 0.85rem; color: var(--text-secondary); margin-top: 2px; }
+.claude-tl-item .current-badge {
+  display: inline-block; padding: 2px 10px; border-radius: 100px;
+  background: var(--sun-orange); color: white; font-size: 0.7rem; font-weight: 700;
+  margin-top: 6px;
+}
+
+/* AI COMPARISON TABLE */
+.ai-compare-table {
+  width: 100%; border-collapse: separate; border-spacing: 0;
+  border-radius: var(--radius); overflow: hidden;
+  border: 1px solid var(--card-border); margin: 24px 0;
+  font-size: 0.88rem;
+}
+.ai-compare-table th {
+  background: #fff5e6; padding: 14px 16px; font-weight: 700;
+  text-align: left; color: var(--text); font-size: 0.85rem;
+}
+.ai-compare-table td {
+  padding: 12px 16px; border-top: 1px solid rgba(0,0,0,0.05);
+  color: var(--text-secondary); line-height: 1.5;
+}
+.ai-compare-table tr:hover td { background: #fffcf8; }
+
+/* EVOLUTION TIMELINE */
 .evo-message {
   text-align: center; margin-bottom: 56px;
   padding: 32px; background: linear-gradient(135deg, #fff8f0, #fff3e0);
@@ -197,30 +226,19 @@ nav .nav-links a:hover { color: var(--sun-orange); }
 .evo-message .big-text .orange { color: var(--sun-orange); }
 .evo-message p { color: var(--text-secondary); font-size: 0.95rem; }
 
-.evo-track {
-  display: flex; flex-direction: column; gap: 0;
-  position: relative;
-}
+.evo-track { display: flex; flex-direction: column; gap: 0; position: relative; }
 .evo-track::before {
   content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
   width: 3px; transform: translateX(-50%);
-  background: linear-gradient(to bottom,
-    rgba(253,141,4,0.1) 0%,
-    rgba(253,141,4,0.3) 40%,
-    var(--sun-orange) 100%
-  );
+  background: linear-gradient(to bottom, rgba(253,141,4,0.1) 0%, rgba(253,141,4,0.3) 40%, var(--sun-orange) 100%);
   z-index: 0;
 }
 
 .evo-stage {
   position: relative; z-index: 1;
-  display: flex; align-items: stretch; gap: 0;
-  margin-bottom: 40px;
+  display: flex; align-items: stretch; gap: 0; margin-bottom: 40px;
 }
-.evo-stage .evo-left,
-.evo-stage .evo-right {
-  flex: 1; padding: 0 32px;
-}
+.evo-stage .evo-left, .evo-stage .evo-right { flex: 1; padding: 0 32px; }
 .evo-stage .evo-center {
   flex-shrink: 0; width: 80px; display: flex;
   flex-direction: column; align-items: center; justify-content: flex-start;
@@ -229,7 +247,7 @@ nav .nav-links a:hover { color: var(--sun-orange); }
 .evo-node {
   width: 56px; height: 56px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.5rem; position: relative;
+  font-size: 1.5rem; position: relative; z-index: 2;
 }
 .evo-stage.s1 .evo-node { background: #fff0d4; border: 3px solid rgba(253,141,4,0.25); }
 .evo-stage.s2 .evo-node { background: #ffe8c0; border: 3px solid rgba(253,141,4,0.45); }
@@ -241,16 +259,15 @@ nav .nav-links a:hover { color: var(--sun-orange); }
   font-family: 'Mali', cursive; font-weight: 700;
   font-size: 0.8rem; color: var(--sun-orange);
   text-align: center; margin-top: 8px; line-height: 1.2;
+  background: var(--bg); padding: 2px 6px; position: relative; z-index: 2;
 }
 
 .evo-card {
   background: var(--card-bg); border: 1px solid var(--card-border);
-  border-radius: var(--radius); padding: 28px;
-  transition: all 0.3s ease;
+  border-radius: var(--radius); padding: 28px; transition: all 0.3s ease;
 }
 .evo-card:hover {
-  box-shadow: 0 8px 24px rgba(253,141,4,0.08);
-  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(253,141,4,0.08); transform: translateY(-2px);
 }
 .evo-card h3 {
   font-family: 'Mali', cursive; font-weight: 700;
@@ -262,11 +279,23 @@ nav .nav-links a:hover { color: var(--sun-orange); }
 }
 .evo-card .evo-trait .icon {
   flex-shrink: 0; width: 24px; height: 24px; border-radius: 6px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.8rem;
+  display: flex; align-items: center; justify-content: center; font-size: 0.8rem;
 }
 .evo-card .evo-trait p { color: var(--text-secondary); }
 .evo-card .evo-trait strong { color: var(--text); font-weight: 600; }
+
+.evo-signs {
+  margin-top: 14px; padding: 12px 16px;
+  background: #fef9f0; border-radius: 12px; border: 1px dashed rgba(253,141,4,0.25);
+}
+.evo-signs .signs-label {
+  font-size: 0.75rem; font-weight: 700; color: var(--sun-orange);
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;
+}
+.evo-signs ul {
+  padding-left: 16px; font-size: 0.83rem; color: var(--text-secondary); line-height: 1.6;
+}
+.evo-signs li { margin-bottom: 2px; }
 
 .evo-example {
   margin-top: 16px; padding: 14px 18px;
@@ -278,26 +307,20 @@ nav .nav-links a:hover { color: var(--sun-orange); }
   font-weight: 700; color: var(--sun-orange); font-size: 0.75rem;
   text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;
 }
-
-.evo-arrow-down {
-  text-align: center; padding: 8px 0; font-size: 1.5rem; color: var(--sun-orange);
-  opacity: 0.5;
-}
+.evo-arrow-down { text-align: center; padding: 8px 0; font-size: 1.5rem; color: var(--sun-orange); opacity: 0.5; }
 
 .evo-bottom-message {
   text-align: center; margin-top: 40px; padding: 24px;
   border: 2px dashed rgba(253,141,4,0.2); border-radius: var(--radius);
 }
 .evo-bottom-message p {
-  font-family: 'Mali', cursive; font-size: 1.1rem;
-  color: var(--text-secondary);
+  font-family: 'Mali', cursive; font-size: 1.1rem; color: var(--text-secondary);
 }
 .evo-bottom-message .you { color: var(--sun-orange); font-weight: 700; }
 
-/* ====== USE CASE CARDS ====== */
+/* USE CASE CARDS */
 .uc-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;
 }
 .uc-card {
   background: var(--card-bg); border: 1px solid var(--card-border);
@@ -319,9 +342,7 @@ nav .nav-links a:hover { color: var(--sun-orange); }
 .uc-badge.skill { background: #fde8e8; color: #c51a1a; }
 .uc-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; color: var(--text); }
 .uc-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
-.uc-card .uc-expand {
-  max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
-}
+.uc-card .uc-expand { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
 .uc-card.open .uc-expand { max-height: 200px; }
 .uc-expand-inner {
   padding-top: 12px; margin-top: 12px;
@@ -333,9 +354,7 @@ nav .nav-links a:hover { color: var(--sun-orange); }
   background: #e8fde8; border-radius: 8px; padding: 4px 12px;
   font-size: 0.8rem; color: #1a8c1a; margin-top: 8px;
 }
-.uc-filter {
-  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;
-}
+.uc-filter { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
 .uc-filter button {
   padding: 6px 16px; border-radius: 100px; border: 1px solid var(--card-border);
   background: white; font-size: 0.85rem; font-weight: 500; cursor: pointer;
@@ -345,25 +364,17 @@ nav .nav-links a:hover { color: var(--sun-orange); }
 .uc-filter button:hover, .uc-filter button.active {
   background: var(--sun-orange); color: white; border-color: var(--sun-orange);
 }
-
-@media (max-width: 768px) {
-  .evo-track::before { left: 24px; }
-  .evo-stage { flex-direction: column; }
-  .evo-stage .evo-center {
-    width: 100%; flex-direction: row; gap: 12px;
-    padding: 0 0 12px 0; justify-content: flex-start;
-  }
-  .evo-stage .evo-left, .evo-stage .evo-right { padding: 0; }
-  .evo-stage-name { text-align: left; margin-top: 0; }
+.uc-filter-group {
+  font-size: 0.75rem; font-weight: 700; color: var(--text-light);
+  text-transform: uppercase; letter-spacing: 1px; margin: 0 4px;
+  display: flex; align-items: center;
 }
 
-/* ====== KNOWLEDGE ====== */
-.k-tabs {
-  display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap;
-}
+/* KNOWLEDGE */
+.k-tabs { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
 .k-tab {
   padding: 10px 20px; border-radius: 100px; border: 1px solid var(--card-border);
-  background: white; font-size: 0.9rem; font-weight: 600; cursor: pointer;
+  background: white; font-size: 0.85rem; font-weight: 600; cursor: pointer;
   transition: all 0.2s; font-family: 'Montserrat', sans-serif;
   color: var(--text-secondary);
 }
@@ -383,9 +394,6 @@ nav .nav-links a:hover { color: var(--sun-orange); }
 }
 .k-compare-header.low-h { background: #fff0e0; color: var(--carrot); }
 .k-compare-header.master-h { background: #e8fde8; color: #1a8c1a; }
-.k-compare-row {
-  display: contents;
-}
 .k-compare-cell {
   padding: 14px 20px; font-size: 0.9rem; border-top: 1px solid rgba(0,0,0,0.05);
   line-height: 1.5;
@@ -407,22 +415,29 @@ nav .nav-links a:hover { color: var(--sun-orange); }
   font-weight: 700; color: var(--sun-orange);
 }
 .k-roi-card .detail { font-size: 0.8rem; color: var(--text-light); margin-top: 4px; }
+.k-roi-card .bar { height: 6px; background: #eee; border-radius: 3px; margin-top: 10px; overflow: hidden; }
+.k-roi-card .bar-fill { height: 100%; background: var(--sun-orange); border-radius: 3px; transition: width 1s ease; }
+.k-roi-total {
+  margin-top: 24px; padding: 20px; text-align: center;
+  background: linear-gradient(135deg, #fff8f0, #fff3e0);
+  border-radius: var(--radius); border: 1px solid rgba(253,141,4,0.2);
+}
+.k-roi-total .big {
+  font-family: 'Mali', cursive; font-size: 1.3rem; font-weight: 700; color: var(--text);
+}
+.k-roi-total .big .orange { color: var(--sun-orange); }
 
 .k-ipo-flow {
   display: flex; align-items: center; gap: 16px;
   margin: 32px 0; justify-content: center; flex-wrap: wrap;
 }
 .k-ipo-box {
-  padding: 24px 32px; border-radius: var(--radius);
-  text-align: center; min-width: 160px;
+  padding: 24px 32px; border-radius: var(--radius); text-align: center; min-width: 160px;
 }
 .k-ipo-box.input { background: #e8f4fd; border: 2px solid #b8ddf5; }
 .k-ipo-box.process { background: #fff5e6; border: 2px solid var(--cyber-yellow); }
 .k-ipo-box.output { background: #e8fde8; border: 2px solid #b8f5c0; }
-.k-ipo-box .ipo-label {
-  font-family: 'Mali', cursive; font-weight: 700;
-  font-size: 1.1rem; margin-bottom: 4px;
-}
+.k-ipo-box .ipo-label { font-family: 'Mali', cursive; font-weight: 700; font-size: 1.1rem; margin-bottom: 4px; }
 .k-ipo-box .ipo-desc { font-size: 0.85rem; color: var(--text-secondary); }
 .k-ipo-arrow { font-size: 1.5rem; color: var(--sun-orange); }
 
@@ -434,35 +449,68 @@ nav .nav-links a:hover { color: var(--sun-orange); }
   font-family: 'Mali', cursive; font-size: 1.1rem; font-weight: 700;
   margin-bottom: 12px; color: var(--text);
 }
-.k-block p, .k-block li {
-  font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7;
-}
+.k-block p, .k-block li { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; }
 .k-block ul { padding-left: 20px; }
 .k-block li { margin-bottom: 6px; }
+.k-block table {
+  width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 0.85rem;
+}
+.k-block table th {
+  text-align: left; padding: 10px 12px; background: #fff5e6;
+  font-weight: 700; font-size: 0.8rem; color: var(--text);
+}
+.k-block table td {
+  padding: 10px 12px; border-top: 1px solid rgba(0,0,0,0.05);
+  color: var(--text-secondary); line-height: 1.5;
+}
+
+.k-agent-layers {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px;
+}
+.k-agent-layer {
+  padding: 16px; border-radius: 12px; border: 1px solid var(--card-border);
+}
+.k-agent-layer .layer-num {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+  color: var(--sun-orange); font-weight: 700; margin-bottom: 4px;
+}
+.k-agent-layer .layer-name { font-weight: 700; font-size: 0.9rem; color: var(--text); margin-bottom: 4px; }
+.k-agent-layer .layer-desc { font-size: 0.83rem; color: var(--text-secondary); line-height: 1.5; }
+
+.prompt-compare {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0;
+}
+.prompt-bad, .prompt-good {
+  padding: 16px; border-radius: 12px; font-size: 0.85rem; line-height: 1.6;
+}
+.prompt-bad { background: #fff0f0; border: 1px solid #fdd; color: #c44; }
+.prompt-good { background: #f0fff0; border: 1px solid #beb; color: #2a7a2a; }
+.prompt-bad .label, .prompt-good .label {
+  font-weight: 700; font-size: 0.75rem; text-transform: uppercase;
+  letter-spacing: 1px; margin-bottom: 6px;
+}
 
 .k-platform-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px;
 }
 .k-platform {
   background: white; border: 1px solid var(--card-border);
   border-radius: var(--radius); padding: 20px; text-align: center;
 }
-.k-platform .name {
-  font-weight: 700; font-size: 1rem; margin-bottom: 4px;
-}
+.k-platform .name { font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
 .k-platform .desc { font-size: 0.85rem; color: var(--text-secondary); }
 .k-platform .best {
   display: inline-block; margin-top: 8px; padding: 3px 12px;
   background: #fff5e6; border-radius: 100px;
   font-size: 0.75rem; font-weight: 600; color: var(--sun-orange);
 }
-
-/* ====== PRACTICE ====== */
-.pr-steps { display: flex; flex-direction: column; gap: 20px; }
-.pr-step {
-  display: flex; gap: 20px; align-items: flex-start;
+.k-platform .use-when {
+  font-size: 0.8rem; color: var(--text-light); margin-top: 6px; font-style: italic;
 }
+
+/* PRACTICE */
+.pr-steps { display: flex; flex-direction: column; gap: 20px; }
+.pr-step { display: flex; gap: 20px; align-items: flex-start; }
 .pr-step-num {
   flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%;
   background: var(--sun-orange); color: white;
@@ -472,10 +520,33 @@ nav .nav-links a:hover { color: var(--sun-orange); }
 .pr-step-content h3 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
 .pr-step-content p { font-size: 0.9rem; color: var(--text-secondary); }
 
-.pr-usecases {
-  display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px;
-  justify-content: center;
+.pr-prompts {
+  margin-top: 32px; display: flex; flex-direction: column; gap: 12px;
 }
+.pr-prompt-card {
+  background: white; border: 1px solid var(--card-border);
+  border-radius: var(--radius); padding: 16px 20px;
+  position: relative; cursor: pointer; transition: all 0.2s;
+}
+.pr-prompt-card:hover { border-color: var(--sun-orange); }
+.pr-prompt-card .pr-prompt-label {
+  font-size: 0.75rem; font-weight: 700; color: var(--sun-orange);
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;
+}
+.pr-prompt-card .pr-prompt-text {
+  font-size: 0.88rem; color: var(--text); line-height: 1.6;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.82rem;
+}
+.pr-prompt-card .copy-btn {
+  position: absolute; top: 12px; right: 12px;
+  padding: 4px 12px; border-radius: 8px; border: 1px solid var(--card-border);
+  background: white; font-size: 0.75rem; cursor: pointer;
+  font-family: 'Montserrat', sans-serif; color: var(--text-light);
+  transition: all 0.2s;
+}
+.pr-prompt-card .copy-btn:hover { border-color: var(--sun-orange); color: var(--sun-orange); }
+
+.pr-usecases { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; justify-content: center; }
 .pr-chip {
   padding: 10px 20px; background: white; border: 1px solid var(--card-border);
   border-radius: 100px; font-size: 0.9rem; color: var(--text-secondary);
@@ -483,15 +554,13 @@ nav .nav-links a:hover { color: var(--sun-orange); }
 }
 .pr-chip:hover { border-color: var(--sun-orange); color: var(--sun-orange); }
 
-/* ====== ROADMAP ====== */
+/* ROADMAP */
 .rm-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;
 }
 .rm-card {
   background: white; border: 1px solid var(--card-border);
-  border-radius: var(--radius); padding: 28px;
-  transition: all 0.3s;
+  border-radius: var(--radius); padding: 28px; transition: all 0.3s;
 }
 .rm-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(253,141,4,0.08); }
 .rm-card .rm-icon { font-size: 2rem; margin-bottom: 12px; }
@@ -507,24 +576,28 @@ nav .nav-links a:hover { color: var(--sun-orange); }
 .rm-quote p { font-size: 1.05rem; font-style: italic; color: var(--text); }
 .rm-quote .author { font-size: 0.85rem; color: var(--text-light); margin-top: 8px; font-style: normal; }
 
-/* ====== PLACEHOLDER SECTIONS ====== */
-.coming-soon {
-  text-align: center; padding: 60px 0;
-  color: var(--text-light); font-style: italic;
-}
-
-/* ====== FOOTER ====== */
+/* FOOTER */
 footer {
   text-align: center; padding: 48px 24px;
   border-top: 1px solid rgba(0,0,0,0.06);
 }
 footer p { color: var(--text-light); font-size: 0.85rem; }
-footer .brand {
-  font-family: 'Mali', cursive;
-  color: var(--sun-orange); font-weight: 700;
-}
+footer .brand { font-family: 'Mali', cursive; color: var(--sun-orange); font-weight: 700; }
 
-/* ====== RESPONSIVE ====== */
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .evo-track::before { left: 24px; }
+  .evo-stage { flex-direction: column; }
+  .evo-stage .evo-center {
+    width: 100%; flex-direction: row; gap: 12px;
+    padding: 0 0 12px 0; justify-content: flex-start;
+  }
+  .evo-stage .evo-left, .evo-stage .evo-right { padding: 0; }
+  .evo-stage-name { text-align: left; margin-top: 0; }
+  .k-agent-layers { grid-template-columns: 1fr; }
+  .prompt-compare { grid-template-columns: 1fr; }
+  .k-compare { grid-template-columns: 1fr; }
+}
 @media (max-width: 640px) {
   nav .nav-links { display: none; }
   section { padding: 60px 0; }
@@ -541,9 +614,10 @@ footer .brand {
   <span class="dot"></span>
   <span class="nav-title">AI Workshop</span>
   <div class="nav-links">
-    <a href="#timeline">Tiến hóa</a>
-    <a href="#usecase">Kinh nghiệm</a>
+    <a href="#ai-evolution">AI tiến hoá</a>
+    <a href="#user-evolution">Cách dùng</a>
     <a href="#knowledge">Kiến thức</a>
+    <a href="#usecase">Use Case</a>
     <a href="#practice">Thực hành</a>
     <a href="#next">Tiếp theo</a>
   </div>
@@ -551,7 +625,7 @@ footer .brand {
 
 <div class="content">
 
-<!-- ====== HERO ====== -->
+<!-- ====== S1: HERO ====== -->
 <section class="hero visible" id="top">
   <div class="hero-eyebrow">
     <span class="pulse"></span>
@@ -563,31 +637,114 @@ footer .brand {
   </h1>
   <p class="hero-sub">25 thứ sếp build bằng AI mà không viết 1 dòng code. Thật luôn.</p>
   <div class="hero-stats">
-    <div class="hero-stat">
-      <div class="num">25</div>
-      <div class="label">use case thật</div>
-    </div>
-    <div class="hero-stat">
-      <div class="num">2</div>
-      <div class="label">công ty</div>
-    </div>
-    <div class="hero-stat">
-      <div class="num">4</div>
-      <div class="label">tháng</div>
-    </div>
-    <div class="hero-stat">
-      <div class="num">0</div>
-      <div class="label">dòng code</div>
-    </div>
+    <div class="hero-stat"><div class="num">25</div><div class="label">use case thật</div></div>
+    <div class="hero-stat"><div class="num">2</div><div class="label">công ty</div></div>
+    <div class="hero-stat"><div class="num">4</div><div class="label">tháng</div></div>
+    <div class="hero-stat"><div class="num">0</div><div class="label">dòng code</div></div>
   </div>
-  <a href="#timeline" class="hero-cta">Coi thử đi ↓</a>
+  <a href="#ai-evolution" class="hero-cta">Coi thử đi ↓</a>
 </section>
 
-<!-- ====== EVOLUTION TIMELINE ====== -->
-<section id="timeline">
-  <div class="section-label">02 — Tiến hóa</div>
+<!-- ====== S2: AI ĐANG TIẾN HOÁ CỠ NÀO? ====== -->
+<section id="ai-evolution">
+  <div class="section-label">02 — AI đang tiến hoá</div>
+  <div class="section-title">AI tiến hoá cỡ nào rồi?</div>
+  <div class="section-subtitle">Cứ 6 tháng AI nhảy 1 bước lớn. Kỹ năng dùng AI hôm nay = lợi thế gấp đôi trong 6 tháng tới.</div>
+
+  <div class="k-block" style="margin-bottom: 32px;">
+    <h3>Dòng thời gian Claude — từ "chat hỏi đáp" đến "đồng nghiệp AI"</h3>
+  </div>
+
+  <div class="claude-tl">
+    <div class="claude-tl-item">
+      <div class="claude-tl-date">03/2023</div>
+      <div class="claude-tl-title">Claude 1 ra đời</div>
+      <div class="claude-tl-desc">Chỉ chat hỏi đáp — như hỏi Google nhưng trả lời dài hơn</div>
+    </div>
+    <div class="claude-tl-item">
+      <div class="claude-tl-date">07/2023</div>
+      <div class="claude-tl-title">Claude 2 — mở cho mọi người</div>
+      <div class="claude-tl-desc">Ai cũng dùng được, không cần lời mời</div>
+    </div>
+    <div class="claude-tl-item">
+      <div class="claude-tl-date">03/2024</div>
+      <div class="claude-tl-title">Claude 3 — nhìn hình, đọc file</div>
+      <div class="claude-tl-desc">Gửi ảnh menu AI đọc được. Gửi PDF AI tóm tắt</div>
+    </div>
+    <div class="claude-tl-item">
+      <div class="claude-tl-date">06/2024</div>
+      <div class="claude-tl-title">Claude 3.5 — code đỉnh, giá rẻ</div>
+      <div class="claude-tl-desc">AI viết code tốt như lập trình viên, giá chỉ 1/3</div>
+    </div>
+    <div class="claude-tl-item">
+      <div class="claude-tl-date">10/2024</div>
+      <div class="claude-tl-title">Computer Use — AI điều khiển máy tính</div>
+      <div class="claude-tl-desc">AI tự bấm chuột, gõ phím, mở app — lần đầu tiên</div>
+    </div>
+    <div class="claude-tl-item">
+      <div class="claude-tl-date">02/2025</div>
+      <div class="claude-tl-title">Extended Thinking — AI biết suy nghĩ</div>
+      <div class="claude-tl-desc">AI dừng lại nghĩ trước khi trả lời, giống người suy xét</div>
+    </div>
+    <div class="claude-tl-item">
+      <div class="claude-tl-date">05/2025</div>
+      <div class="claude-tl-title">Claude 4 + Claude Code</div>
+      <div class="claude-tl-desc">AI viết code chuyên nghiệp, dev dùng hàng ngày</div>
+    </div>
+    <div class="claude-tl-item">
+      <div class="claude-tl-date">09/2025</div>
+      <div class="claude-tl-title">Claude 4.5 — tập trung 30+ giờ</div>
+      <div class="claude-tl-desc">AI làm việc liên tục 30 tiếng không mất tập trung</div>
+    </div>
+    <div class="claude-tl-item current">
+      <div class="claude-tl-date">02/2026</div>
+      <div class="claude-tl-title">Claude 4.6 — 1 triệu token, Memory, Skill</div>
+      <div class="claude-tl-desc">Đọc 2,500 trang sách 1 lần. Nhớ bạn là ai. Có hệ thống skill.</div>
+      <span class="current-badge">Jinxiu đang dùng bản này</span>
+    </div>
+  </div>
+
+  <div class="k-block" style="margin-top: 40px;">
+    <h3>3 ông lớn AI — dùng cái nào?</h3>
+    <table class="ai-compare-table">
+      <tr>
+        <th></th>
+        <th>ChatGPT</th>
+        <th>Claude</th>
+        <th>Gemini</th>
+      </tr>
+      <tr>
+        <td style="font-weight:600; color: var(--text);">Ai dùng nhiều?</td>
+        <td>~60% thế giới</td>
+        <td>~5-8% (niche chất)</td>
+        <td>~21% (đang tăng)</td>
+      </tr>
+      <tr>
+        <td style="font-weight:600; color: var(--text);">Giỏi nhất ở đâu?</td>
+        <td>Đa năng, plugin nhiều</td>
+        <td>Suy luận sâu, code, viết dài</td>
+        <td>Tích hợp Google, xử lý video</td>
+      </tr>
+      <tr>
+        <td style="font-weight:600; color: var(--text);">Giống như</td>
+        <td>Dao đa năng Thụy Sĩ</td>
+        <td>Chuyên gia tư vấn riêng</td>
+        <td>Trợ lý gắn liền Google</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="evo-message" style="margin-top: 32px;">
+    <div class="big-text">Cứ 6 tháng AI nhảy 1 bước lớn</div>
+    <p>Kỹ năng dùng AI hôm nay = <strong style="color: var(--sun-orange);">lợi thế gấp đôi</strong> trong 6 tháng tới.</p>
+  </div>
+</section>
+
+<!-- ====== S3: SỰ TIẾN HOÁ TRONG CÁCH DÙNG AI ====== -->
+<section id="user-evolution" style="background: var(--section-alt); margin: 0 -24px; padding-left: 24px; padding-right: 24px;">
+  <div class="section-label">03 — Cách dùng AI</div>
   <div class="section-title">Sự tiến hóa trong cách dùng AI</div>
-  <div class="section-subtitle">AI không yếu — skill của người dùng mới là vấn đề. Con người mới chỉ khai thác phần rất nhỏ sức mạnh AI.</div>
+  <div class="section-subtitle">AI không yếu — skill của người dùng mới là vấn đề. Bạn đang ở đâu trên hành trình này?</div>
 
   <div class="evo-message">
     <div class="big-text">Cùng 1 công cụ AI — <span class="orange">cách dùng</span> quyết định kết quả</div>
@@ -596,7 +753,7 @@ footer .brand {
 
   <div class="evo-track">
 
-    <!-- STAGE 1: CHATBOT -->
+    <!-- STAGE 1: LOW AI -->
     <div class="evo-stage s1">
       <div class="evo-left">
         <div class="evo-card">
@@ -613,6 +770,14 @@ footer .brand {
             <div class="icon">🔄</div>
             <p><strong>Copy-paste prompt.</strong> Không có quy trình, mỗi người hỏi 1 kiểu, không ai dùng lại được.</p>
           </div>
+          <div class="evo-signs">
+            <div class="signs-label">Dấu hiệu nhận biết</div>
+            <ul>
+              <li>Mở AI lên rồi không biết hỏi gì</li>
+              <li>Hỏi xong thấy "AI trả lời tào lao" rồi bỏ</li>
+              <li>Mỗi lần dùng AI đều bắt đầu từ 0</li>
+            </ul>
+          </div>
           <div class="evo-example">
             <div class="ex-label">Ví dụ thực tế</div>
             "Viết cho tui 1 bài caption về sản phẩm mới" → AI viết chung chung, không đúng tone Chasy, phải sửa 5-6 lần.
@@ -628,7 +793,7 @@ footer .brand {
 
     <div class="evo-arrow-down">↓</div>
 
-    <!-- STAGE 2: GIAO VIỆC CÓ Ý THỨC -->
+    <!-- STAGE 2: DÙNG AI CÓ Ý THỨC -->
     <div class="evo-stage s2">
       <div class="evo-left"></div>
       <div class="evo-center">
@@ -650,6 +815,14 @@ footer .brand {
             <div class="icon">💡</div>
             <p><strong>Biết feedback lại.</strong> Không chấp nhận kết quả dở — biết chỉnh, bổ sung, yêu cầu AI làm lại đúng ý.</p>
           </div>
+          <div class="evo-signs">
+            <div class="signs-label">Dấu hiệu nhận biết</div>
+            <ul>
+              <li>Viết prompt xong tự kiểm tra "mình đã cho đủ thông tin chưa?"</li>
+              <li>Lưu lại prompt hay để dùng lại</li>
+              <li>Biết khi nào AI trả lời sai và sửa được</li>
+            </ul>
+          </div>
           <div class="evo-example">
             <div class="ex-label">Ví dụ thực tế</div>
             "Bạn là content writer cho Chasy — thương hiệu đồ ăn vặt GenZ. Viết caption ra mắt snack mới, tone vui vẻ, dưới 150 từ, có CTA." → Dùng được luôn, chỉ chỉnh nhẹ.
@@ -660,7 +833,7 @@ footer .brand {
 
     <div class="evo-arrow-down">↓</div>
 
-    <!-- STAGE 3: MASTER AI — AGENT -->
+    <!-- STAGE 3: MASTER AI -->
     <div class="evo-stage s3">
       <div class="evo-left">
         <div class="evo-card">
@@ -681,10 +854,19 @@ footer .brand {
             <div class="icon">🏗️</div>
             <p><strong>Build công cụ không cần code.</strong> Web app, bot, dashboard, hệ thống tự động — AI build, người dùng chỉ cần mô tả.</p>
           </div>
+          <div class="evo-signs">
+            <div class="signs-label">Dấu hiệu nhận biết</div>
+            <ul>
+              <li>AI nhớ context, không cần giải thích lại</li>
+              <li>Đóng gói kinh nghiệm thành skill cho team dùng chung</li>
+              <li>Build công cụ/web/bot bằng AI mà không biết code</li>
+            </ul>
+          </div>
           <div class="evo-example">
             <div class="ex-label">Ví dụ thực tế — Jinxiu đang ở đây</div>
-            AI Agent của Xiu biết brand Chasy, biết cách viết PP, biết IPO framework. Xiu nói "viết PP cho vị trí Sale Admin" → ra PP hoàn chỉnh trong 15 phút, đúng chuẩn công ty, có mốc 30/60/90 ngày. Không cần giải thích lại.
+            AI Agent của Xiu biết brand Chasy, biết cách viết PP, biết IPO framework. Xiu nói "viết PP cho vị trí Sale Admin" → ra PP hoàn chỉnh trong 15 phút, đúng chuẩn công ty, có mốc 30/60/90 ngày.
           </div>
+          <p style="margin-top: 12px; font-size: 0.88rem;"><a href="#usecase" style="color: var(--sun-orange); font-weight: 600; text-decoration: none;">Xem 25 use case thật của Xiu ↓</a></p>
         </div>
       </div>
       <div class="evo-center">
@@ -700,157 +882,7 @@ footer .brand {
   </div>
 </section>
 
-<!-- ====== USE CASES — Chia sẻ kinh nghiệm ====== -->
-<section id="usecase" style="background: var(--section-alt); margin: 0 -24px; padding-left: 24px; padding-right: 24px;">
-  <div class="section-label">03 — Chia sẻ</div>
-  <div class="section-title">25 Use Case thật của Xiu</div>
-  <div class="section-subtitle">Không lý thuyết — đây là những gì Xiu đã build bằng AI trong 4 tháng qua. Click để xem chi tiết.</div>
-
-  <div class="uc-filter">
-    <button class="active" onclick="filterUC('all', this)">Tất cả</button>
-    <button onclick="filterUC('chat', this)">Chat & Tư duy</button>
-    <button onclick="filterUC('code', this)">Code & Automation</button>
-    <button onclick="filterUC('web', this)">Tạo file & Web</button>
-    <button onclick="filterUC('skill', this)">Custom Skill</button>
-  </div>
-
-  <div class="uc-grid">
-    <div class="uc-card" data-type="chat" onclick="this.classList.toggle('open')">
-      <span class="uc-badge chat">Chat</span>
-      <h4>Growth Profile Vy Nhung & Lan Vy</h4>
-      <p>Đánh giá năng lực + lộ trình phát triển cá nhân</p>
-      <div class="uc-expand"><div class="uc-expand-inner">AI phân tích điểm mạnh/yếu cụ thể, đề xuất action plan theo từng người.<div class="uc-result">✅ Nhân viên biết rõ cần phát triển gì</div></div></div>
-    </div>
-    <div class="uc-card" data-type="chat" onclick="this.classList.toggle('open')">
-      <span class="uc-badge chat">Chat</span>
-      <h4>PP HR Connector, Sale Admin, TP KD</h4>
-      <p>Performance Profile cho 3 vị trí — kỳ vọng rõ từ ngày 1</p>
-      <div class="uc-expand"><div class="uc-expand-inner">PP gắn chiến lược thực tế, tiêu chí đo được theo mốc 30/60/90 ngày.<div class="uc-result">✅ Tuyển đúng người, onboard nhanh</div></div></div>
-    </div>
-    <div class="uc-card" data-type="chat" onclick="this.classList.toggle('open')">
-      <span class="uc-badge chat">Chat</span>
-      <h4>MTCV + Onboarding Sale Admin</h4>
-      <p>Từ PP sinh mô tả công việc + lịch onboarding 30 ngày</p>
-      <div class="uc-expand"><div class="uc-expand-inner">Nhân viên ký MTCV ngày đầu, manager có lịch onboarding chi tiết.<div class="uc-result">✅ Onboarding có hệ thống</div></div></div>
-    </div>
-    <div class="uc-card" data-type="chat" onclick="this.classList.toggle('open')">
-      <span class="uc-badge chat">Chat</span>
-      <h4>Manager README Framework</h4>
-      <p>Viết "user manual" cho sếp — team hiểu cách làm việc cùng</p>
-      <div class="uc-expand"><div class="uc-expand-inner">Team đọc xong biết sếp thích giao tiếp kiểu gì, kỳ vọng gì, pet peeves là gì.<div class="uc-result">✅ Giảm miscommunication</div></div></div>
-    </div>
-    <div class="uc-card" data-type="chat" onclick="this.classList.toggle('open')">
-      <span class="uc-badge chat">Chat</span>
-      <h4>360-degree Survey</h4>
-      <p>Thiết kế khảo sát đánh giá 360 cho tổ chức</p>
-      <div class="uc-expand"><div class="uc-expand-inner">AI thiết kế câu hỏi survey chuẩn, phân tích kết quả tự động.<div class="uc-result">✅ Feedback minh bạch, có data</div></div></div>
-    </div>
-    <div class="uc-card" data-type="chat" onclick="this.classList.toggle('open')">
-      <span class="uc-badge chat">Chat</span>
-      <h4>OKR 2026 An Quyên</h4>
-      <p>Mục tiêu chiến lược cả năm, có Key Results đo được</p>
-      <div class="uc-expand"><div class="uc-expand-inner">OKR theo framework chuẩn, gắn chiến lược công ty, metric rõ ràng.<div class="uc-result">✅ OKR hoàn chỉnh trong 1 buổi</div></div></div>
-    </div>
-    <div class="uc-card" data-type="chat" onclick="this.classList.toggle('open')">
-      <span class="uc-badge chat">Chat</span>
-      <h4>Lộ trình 60 ngày tái cấu trúc</h4>
-      <p>Tái cấu trúc tổ chức — timeline chi tiết từng tuần</p>
-      <div class="uc-expand"><div class="uc-expand-inner">Phân công trách nhiệm, checkpoint đánh giá, không bị loạn.<div class="uc-result">✅ Roadmap rõ ràng</div></div></div>
-    </div>
-    <div class="uc-card" data-type="chat" onclick="this.classList.toggle('open')">
-      <span class="uc-badge chat">Chat</span>
-      <h4>Phân tích chi phí nhân sự</h4>
-      <p>BP kế toán 34.9% quỹ lương — hợp lý không?</p>
-      <div class="uc-expand"><div class="uc-expand-inner">Benchmark industry standard, key-person risk, đề xuất cấu trúc lại.<div class="uc-result">✅ Quyết định từ data, không cảm tính</div></div></div>
-    </div>
-    <div class="uc-card" data-type="chat" onclick="this.classList.toggle('open')">
-      <span class="uc-badge chat">Chat</span>
-      <h4>Pricing kênh Online</h4>
-      <p>Định giá sản phẩm trên từng kênh bán hàng</p>
-      <div class="uc-expand"><div class="uc-expand-inner">So sánh margin theo kênh, chiến lược giá phù hợp từng platform.<div class="uc-result">✅ Pricing strategy có data backup</div></div></div>
-    </div>
-    <div class="uc-card" data-type="chat" onclick="this.classList.toggle('open')">
-      <span class="uc-badge chat">Chat</span>
-      <h4>Phân tích cấu trúc kênh bán</h4>
-      <p>Đánh giá hiệu quả từng kênh phân phối</p>
-      <div class="uc-expand"><div class="uc-expand-inner">AI phân tích revenue, margin, growth rate theo từng kênh.<div class="uc-result">✅ Biết kênh nào scale, kênh nào cắt</div></div></div>
-    </div>
-    <div class="uc-card" data-type="chat" onclick="this.classList.toggle('open')">
-      <span class="uc-badge chat">Chat</span>
-      <h4>AI Capability Building Framework</h4>
-      <p>Framework xây năng lực AI cho cả tổ chức</p>
-      <div class="uc-expand"><div class="uc-expand-inner">Dùng AI để xây framework dạy người khác dùng AI. Meta level.<div class="uc-result">✅ Cả công ty nâng level</div></div></div>
-    </div>
-    <div class="uc-card" data-type="chat" onclick="this.classList.toggle('open')">
-      <span class="uc-badge chat">Chat</span>
-      <h4>Agentic AI Principles</h4>
-      <p>Nguyên tắc để AI hoạt động như agent tự chủ</p>
-      <div class="uc-expand"><div class="uc-expand-inner">AI hiểu ngữ cảnh, nhớ quy trình, tự đề xuất bước tiếp theo.<div class="uc-result">✅ AI từ "công cụ" thành "đồng nghiệp"</div></div></div>
-    </div>
-    <div class="uc-card" data-type="chat" onclick="this.classList.toggle('open')">
-      <span class="uc-badge chat">Chat</span>
-      <h4>Cấu trúc Lark Group 4-tier</h4>
-      <p>Tổ chức lại nhóm chat Lark theo 4 tầng logic</p>
-      <div class="uc-expand"><div class="uc-expand-inner">Công ty → Phòng ban → Dự án → Task, không bị loạn tin nhắn.<div class="uc-result">✅ Thông tin đúng người, đúng chỗ</div></div></div>
-    </div>
-    <div class="uc-card" data-type="code" onclick="this.classList.toggle('open')">
-      <span class="uc-badge code">Code</span>
-      <h4>Đối soát VTP v1.1</h4>
-      <p>Đối soát đơn hàng vận chuyển tự động</p>
-      <div class="uc-expand"><div class="uc-expand-inner">Script tự động so khớp data, flag sai lệch, xuất báo cáo.<div class="uc-result">✅ Từ 1 ngày → 10 phút</div></div></div>
-    </div>
-    <div class="uc-card" data-type="code" onclick="this.classList.toggle('open')">
-      <span class="uc-badge code">Code</span>
-      <h4>Điều phối đơn hàng</h4>
-      <p>Hệ thống tự phân bổ đơn theo kho, vùng, carrier</p>
-      <div class="uc-expand"><div class="uc-expand-inner">Logic điều phối: đơn nào giao kho nào, carrier nào rẻ nhất, auto notify.<div class="uc-result">✅ Giảm sai sót, nhanh hơn 5x</div></div></div>
-    </div>
-    <div class="uc-card" data-type="code" onclick="this.classList.toggle('open')">
-      <span class="uc-badge code">Code</span>
-      <h4>Bot Telegram "Trợ lý AQ"</h4>
-      <p>Bot nhắn nhở, gửi báo cáo tự động qua Telegram</p>
-      <div class="uc-expand"><div class="uc-expand-inner">AI build bot từ A-Z: nhận lệnh, xử lý data, gửi kết quả.<div class="uc-result">✅ Trợ lý ảo riêng, chạy 24/7</div></div></div>
-    </div>
-    <div class="uc-card" data-type="web" onclick="this.classList.toggle('open')">
-      <span class="uc-badge web">Web</span>
-      <h4>Manager README Website</h4>
-      <p>Trang web cá nhân — deploy lên Vercel</p>
-      <div class="uc-expand"><div class="uc-expand-inner">AI viết toàn bộ HTML/CSS/JS. 0 dòng code viết tay. Có animation, responsive.<div class="uc-result">✅ readme-jinxiu.vercel.app</div></div></div>
-    </div>
-    <div class="uc-card" data-type="web" onclick="this.classList.toggle('open')">
-      <span class="uc-badge web">Web</span>
-      <h4>Ma Trận Ứng Dụng AI</h4>
-      <p>Bản đồ visual tất cả cách dùng AI</p>
-      <div class="uc-expand"><div class="uc-expand-inner">Web interactive: click từng ô thấy chi tiết, phân theo tính năng và mức độ.<div class="uc-result">✅ Nhìn 1 phát hiểu AI làm gì</div></div></div>
-    </div>
-    <div class="uc-card" data-type="web" onclick="this.classList.toggle('open')">
-      <span class="uc-badge web">Web</span>
-      <h4>Playbook Hub / Két Sắt Tri Thức</h4>
-      <p>Lưu trữ quy trình, framework, kinh nghiệm công ty</p>
-      <div class="uc-expand"><div class="uc-expand-inner">Đóng gói kinh nghiệm thành tài liệu ai cũng tra cứu được.<div class="uc-result">✅ Tri thức không mất khi người đi</div></div></div>
-    </div>
-    <div class="uc-card" data-type="skill" onclick="this.classList.toggle('open')">
-      <span class="uc-badge skill">Skill</span>
-      <h4>PP Builder Skill</h4>
-      <p>Dạy AI viết Performance Profile tự động</p>
-      <div class="uc-expand"><div class="uc-expand-inner">Đóng gói kinh nghiệm thành skill — AI học 1 lần, dùng mãi.<div class="uc-result">✅ Từ 1 ngày → 15 phút viết PP</div></div></div>
-    </div>
-    <div class="uc-card" data-type="skill" onclick="this.classList.toggle('open')">
-      <span class="uc-badge skill">Skill</span>
-      <h4>MTCV + Onboarding Generator</h4>
-      <p>Từ PP → tự động sinh MTCV + lịch onboarding 30 ngày</p>
-      <div class="uc-expand"><div class="uc-expand-inner">Pipeline hoàn chỉnh: PP → MTCV → Onboarding. End-to-end.<div class="uc-result">✅ Quy trình tuyển dụng tự động</div></div></div>
-    </div>
-    <div class="uc-card" data-type="skill" onclick="this.classList.toggle('open')">
-      <span class="uc-badge skill">Skill</span>
-      <h4>IPO Output Designer</h4>
-      <p>Skill kiểm tra chất lượng output — hỏi ngược 5 câu</p>
-      <div class="uc-expand"><div class="uc-expand-inner">Framework IPO: Input → Process → Output. Hỏi đúng trước khi làm.<div class="uc-result">✅ Output đúng 80-90% lần đầu</div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ====== KNOWLEDGE ====== -->
+<!-- ====== S4: KIẾN THỨC NỀN TẢNG ====== -->
 <section id="knowledge">
   <div class="section-label">04 — Kiến thức</div>
   <div class="section-title">Hiểu AI đúng cách</div>
@@ -861,14 +893,15 @@ footer .brand {
     <button class="k-tab" onclick="showKTab('roi', this)">ROI tiết kiệm</button>
     <button class="k-tab" onclick="showKTab('ipo', this)">IPO Framework</button>
     <button class="k-tab" onclick="showKTab('platforms', this)">So sánh AI</button>
-    <button class="k-tab" onclick="showKTab('tips', this)">Tips prompting</button>
+    <button class="k-tab" onclick="showKTab('tips', this)">Tips Prompting</button>
+    <button class="k-tab" onclick="showKTab('packaging', this)">Đóng gói K×S</button>
   </div>
 
   <!-- TAB 1: Prompt vs Agent -->
   <div class="k-panel active" id="kp-prompt-vs-agent">
     <div class="k-block">
-      <h3>Prompt rời rạc vs AI Agent — khác nhau ở đâu?</h3>
-      <p>Hầu hết mọi người đang dùng AI kiểu "hỏi rồi quên". AI Agent là bước tiến hóa tiếp theo.</p>
+      <h3>Prompt rời rạc vs AI Agent</h3>
+      <p>Prompt đơn lẻ giống như thuê chuyên gia mỗi sáng, giải thích lại toàn bộ bối cảnh, rồi kết thúc ngày làm việc mà không có tài liệu nào lưu lại.</p>
     </div>
     <div class="k-compare">
       <div class="k-compare-header low-h">Prompt rời rạc</div>
@@ -886,6 +919,33 @@ footer .brand {
       <div class="k-compare-cell low">Mất 15-30 phút mỗi lần</div>
       <div class="k-compare-cell master">5 phút hoặc tự động hoàn toàn</div>
     </div>
+
+    <div class="k-block">
+      <h3>4 tầng cấu trúc Agent</h3>
+      <div class="k-agent-layers">
+        <div class="k-agent-layer" style="background: #fff8f0;">
+          <div class="layer-num">Tầng 1</div>
+          <div class="layer-name">Nhân vật (Agent.md)</div>
+          <div class="layer-desc">AI biết mình là ai → "Content writer của Chasy, tone GenZ, đồ ăn vặt"</div>
+        </div>
+        <div class="k-agent-layer" style="background: #f0f8ff;">
+          <div class="layer-num">Tầng 2</div>
+          <div class="layer-name">Kỹ năng (Skill.md)</div>
+          <div class="layer-desc">AI biết quy trình → "Skill viết PP: hỏi 5 câu → phân tích → xuất file chuẩn"</div>
+        </div>
+        <div class="k-agent-layer" style="background: #f8fff0;">
+          <div class="layer-num">Tầng 3</div>
+          <div class="layer-name">Ngữ cảnh (Context)</div>
+          <div class="layer-desc">Thông tin công ty → "Brand guideline Chasy, danh sách SP, đối thủ"</div>
+        </div>
+        <div class="k-agent-layer" style="background: #fff0f8;">
+          <div class="layer-num">Tầng 4</div>
+          <div class="layer-name">Đầu vào (Input)</div>
+          <div class="layer-desc">Data mỗi lần chạy → "Tên vị trí tuyển, phòng ban, yêu cầu cụ thể"</div>
+        </div>
+      </div>
+    </div>
+
     <div class="k-block">
       <h3>Ví dụ Chasy</h3>
       <p><strong>Prompt rời rạc:</strong> "Viết email cho đối tác" → AI viết generic, phải sửa 5 lần, lần sau hỏi lại từ đầu.</p>
@@ -904,86 +964,150 @@ footer .brand {
         <div class="activity">Viết content MKT</div>
         <div class="saving">-80%</div>
         <div class="detail">3 tiếng → 30 phút</div>
+        <div class="bar"><div class="bar-fill" style="width: 80%"></div></div>
       </div>
       <div class="k-roi-card">
         <div class="activity">Research thị trường</div>
         <div class="saving">-85%</div>
         <div class="detail">Nửa ngày → 15 phút</div>
+        <div class="bar"><div class="bar-fill" style="width: 85%"></div></div>
       </div>
       <div class="k-roi-card">
         <div class="activity">Viết Performance Profile</div>
         <div class="saving">-90%</div>
         <div class="detail">1 ngày → 15 phút</div>
+        <div class="bar"><div class="bar-fill" style="width: 90%"></div></div>
       </div>
       <div class="k-roi-card">
         <div class="activity">Đối soát đơn hàng</div>
         <div class="saving">-95%</div>
         <div class="detail">1 ngày → 10 phút</div>
+        <div class="bar"><div class="bar-fill" style="width: 95%"></div></div>
       </div>
       <div class="k-roi-card">
         <div class="activity">Phân tích data</div>
         <div class="saving">-75%</div>
         <div class="detail">Nửa ngày → 1 tiếng</div>
+        <div class="bar"><div class="bar-fill" style="width: 75%"></div></div>
       </div>
       <div class="k-roi-card">
         <div class="activity">Viết email đối tác</div>
         <div class="saving">-70%</div>
         <div class="detail">25 phút → 8 phút</div>
+        <div class="bar"><div class="bar-fill" style="width: 70%"></div></div>
       </div>
       <div class="k-roi-card">
         <div class="activity">Lên kế hoạch tuần</div>
         <div class="saving">-65%</div>
         <div class="detail">45 phút → 15 phút</div>
+        <div class="bar"><div class="bar-fill" style="width: 65%"></div></div>
       </div>
       <div class="k-roi-card">
         <div class="activity">Build web app</div>
         <div class="saving">-90%</div>
         <div class="detail">2 tuần → 2 buổi tối</div>
+        <div class="bar"><div class="bar-fill" style="width: 90%"></div></div>
       </div>
+    </div>
+    <div class="k-roi-total">
+      <div class="big">Tổng: Jinxiu tiết kiệm ước tính <span class="orange">15-20 giờ/tuần</span> bằng AI</div>
+      <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 4px;">Đó là 2.5 ngày làm việc. Mỗi tuần.</p>
     </div>
   </div>
 
-  <!-- TAB 3: IPO -->
+  <!-- TAB 3: IPO Framework -->
   <div class="k-panel" id="kp-ipo">
     <div class="k-block">
-      <h3>IPO Framework — Tư duy trước khi giao việc cho AI</h3>
-      <p>Đây là framework Jinxiu tự phát triển. Trước khi nhờ AI làm bất kỳ thứ gì, hỏi 3 câu này:</p>
+      <h3>IPO Framework — Tư duy cốt lõi</h3>
+      <p style="font-family: 'Mali', cursive; font-size: 1.1rem; color: var(--text); font-weight: 700; margin-bottom: 8px;">Output chất lượng = Knowledge đủ × Skill đủ. Thiếu 1 trong 2 = ra rác.</p>
+      <p><strong>Thiếu Knowledge:</strong> AI làm đúng bước nhưng sai bối cảnh → Nhờ AI viết email đối tác mà không nói đối tác là ai, mối quan hệ thế nào → email generic, đọc vô duyên.</p>
+      <p style="margin-top: 6px;"><strong>Thiếu Skill:</strong> AI biết context nhưng không biết quy trình → AI biết về Chasy nhưng không biết format PP chuẩn → PP thiếu mốc 30/60/90 ngày, TP đọc xong phải sửa lại.</p>
     </div>
 
     <div class="k-ipo-flow">
       <div class="k-ipo-box input">
         <div class="ipo-label">Input</div>
-        <div class="ipo-desc">AI cần biết gì<br>để làm được?</div>
+        <div class="ipo-desc">Knowledge —<br>AI cần biết gì?</div>
       </div>
       <div class="k-ipo-arrow">→</div>
       <div class="k-ipo-box process">
         <div class="ipo-label">Process</div>
-        <div class="ipo-desc">AI cần làm theo<br>quy trình nào?</div>
+        <div class="ipo-desc">Skill Set —<br>AI làm theo bước nào?</div>
       </div>
       <div class="k-ipo-arrow">→</div>
       <div class="k-ipo-box output">
         <div class="ipo-label">Output</div>
-        <div class="ipo-desc">Kết quả cần<br>trông như thế nào?</div>
+        <div class="ipo-desc">Deliverable —<br>Kết quả chuẩn là gì?</div>
       </div>
+    </div>
+
+    <div class="k-block">
+      <h3>3 loại Input (Knowledge)</h3>
+      <ul>
+        <li><strong>K1 — Bối cảnh (tĩnh):</strong> Thông tin công ty, phòng ban, chiến lược — nạp 1 lần. VD: brand guideline Chasy, chiến lược AQ 2026.</li>
+        <li><strong>K2 — Dữ liệu (động):</strong> Data cụ thể mỗi lần chạy — nạp mỗi lần. VD: "Vị trí Sale Admin, phòng kinh doanh".</li>
+        <li><strong>K3 — Chuẩn tham chiếu:</strong> Output "đạt" trông như thế nào — mẫu, tiêu chí. VD: PP mẫu đã duyệt trước đó.</li>
+      </ul>
+    </div>
+    <div class="k-block">
+      <h3>3 loại Skill (Process)</h3>
+      <ul>
+        <li><strong>Logic:</strong> Suy luận, phân tích, ra quyết định. VD: phân tích yêu cầu vị trí → xác định KPI.</li>
+        <li><strong>Craft:</strong> Trình bày, format, visual, ngôn ngữ. VD: PP đúng format, heading rõ, dễ đọc.</li>
+        <li><strong>Judgment:</strong> Phù hợp đối tượng, tone, timing. VD: PP cho Chasy khác PP cho tập đoàn lớn.</li>
+      </ul>
+    </div>
+
+    <div class="k-block">
+      <h3>5 câu hỏi trước khi giao việc cho AI</h3>
+      <ul>
+        <li><strong>C1:</strong> Output này xong rồi <em>AI SẼ DÙNG</em>, họ làm gì tiếp theo?</li>
+        <li><strong>C2:</strong> Phản ứng lý tưởng khi người nhận đọc xong là gì?</li>
+        <li><strong>C3:</strong> Ngoài "đúng nội dung", còn tiêu chí ngầm nào?</li>
+        <li><strong>C4:</strong> Người nhận dùng output này ở đâu, bao lâu, mục đích gì?</li>
+        <li><strong>C5:</strong> Confirm outline 3 dòng trước khi làm đầy đủ?</li>
+      </ul>
     </div>
 
     <div class="k-block">
       <h3>Ví dụ: Viết PP cho vị trí Sale Admin</h3>
       <ul>
-        <li><strong>Input:</strong> Tên vị trí, phòng ban, chiến lược công ty, kỳ vọng của trưởng phòng</li>
-        <li><strong>Process:</strong> Phân tích yêu cầu → Xác định KPI → Chia mốc 30/60/90 ngày → Format chuẩn PP</li>
-        <li><strong>Output:</strong> File PP hoàn chỉnh, có đo được, trưởng phòng không cần sửa lại</li>
+        <li><strong>C1:</strong> TP Kinh doanh dùng PP để set kỳ vọng, HR dùng để sinh JD + onboarding</li>
+        <li><strong>C2:</strong> TP đọc xong không cần sửa, biết đánh giá nhân viên theo mốc nào</li>
+        <li><strong>C3:</strong> Phải gắn chiến lược AQ 2026, không viết generic</li>
+        <li><strong>C4:</strong> Lưu trữ trên Lark, dùng suốt thời gian nhân viên làm việc</li>
+        <li><strong>C5:</strong> Outline 3 dòng → confirm → build đầy đủ</li>
       </ul>
     </div>
 
     <div class="k-block">
-      <h3>Tại sao IPO quan trọng?</h3>
-      <p>Hầu hết người dùng AI chỉ nói <strong>"làm cái này cho tui"</strong> mà không cho AI biết input đầy đủ, không mô tả process, không define output chuẩn. Kết quả: AI đoán mò → output dở → người dùng kết luận "AI dở".</p>
-      <p style="margin-top: 8px;">Thực tế: <strong>AI không dở. Cách giao việc mới dở.</strong> IPO giải quyết đúng vấn đề này.</p>
+      <h3>Sai lầm phổ biến</h3>
+      <table>
+        <tr>
+          <th>Sai lầm</th>
+          <th>Hậu quả</th>
+          <th>Đúng phải là</th>
+        </tr>
+        <tr>
+          <td>Không cho AI context (K1)</td>
+          <td>AI đoán mò, output sai bối cảnh</td>
+          <td>Cho AI "đọc hồ sơ" trước</td>
+        </tr>
+        <tr>
+          <td>Không define output chuẩn (K3)</td>
+          <td>Làm xong không biết đạt hay chưa</td>
+          <td>Viết mẫu output ra trước</td>
+        </tr>
+        <tr>
+          <td>Bảo AI "làm tất cả 1 lần"</td>
+          <td>Output dở ở nhiều chỗ</td>
+          <td>Chia nhỏ thành từng bước</td>
+        </tr>
+      </table>
     </div>
   </div>
 
-  <!-- TAB 4: So sánh nền tảng -->
+  <!-- TAB 4: So sánh AI -->
   <div class="k-panel" id="kp-platforms">
     <div class="k-block">
       <h3>4 nền tảng AI phổ biến — dùng cái nào?</h3>
@@ -994,21 +1118,25 @@ footer .brand {
         <div class="name">Claude</div>
         <div class="desc">Tư duy sâu, viết dài, xử lý tài liệu phức tạp, build agent</div>
         <div class="best">Jinxiu dùng chính</div>
+        <div class="use-when">Dùng khi: viết tài liệu dài, phân tích sâu, build skill</div>
       </div>
       <div class="k-platform">
         <div class="name">ChatGPT</div>
         <div class="desc">Đa năng, có GPTs store, tích hợp DALL-E tạo hình</div>
         <div class="best">Phổ biến nhất</div>
+        <div class="use-when">Dùng khi: brainstorm nhanh, tạo hình bằng DALL-E</div>
       </div>
       <div class="k-platform">
         <div class="name">Gemini</div>
         <div class="desc">Tích hợp Google (Docs, Sheets, Gmail), search mạnh</div>
         <div class="best">Hệ sinh thái Google</div>
+        <div class="use-when">Dùng khi: phân tích data Google Sheets, tìm kiếm nhanh</div>
       </div>
       <div class="k-platform">
         <div class="name">Grok</div>
         <div class="desc">Tích hợp X (Twitter), realtime data, tone thoải mái</div>
         <div class="best">Xu hướng & mạng xã hội</div>
+        <div class="use-when">Dùng khi: theo dõi trend mạng xã hội</div>
       </div>
     </div>
     <div class="k-block" style="margin-top: 20px;">
@@ -1017,38 +1145,300 @@ footer .brand {
     </div>
   </div>
 
-  <!-- TAB 5: Tips prompting -->
+  <!-- TAB 5: Tips Prompting -->
   <div class="k-panel" id="kp-tips">
     <div class="k-block">
       <h3>4 kỹ thuật prompting thực tế cho team Chasy</h3>
       <p>Không cần nhớ hết — chỉ cần 4 cái này là đủ dùng.</p>
     </div>
+
     <div class="k-block">
       <h3>1. Cho vai trò (Role Prompting)</h3>
-      <p>"Bạn là content writer cho Chasy — thương hiệu đồ ăn vặt GenZ Việt Nam."</p>
-      <p style="margin-top: 4px; color: var(--sun-orange); font-weight: 600;">Tại sao: AI viết khác hoàn toàn khi biết mình đang "đóng vai" ai.</p>
+      <p>AI viết khác hoàn toàn khi biết mình đang "đóng vai" ai.</p>
+      <div class="prompt-compare">
+        <div class="prompt-bad">
+          <div class="label">❌ Trước</div>
+          "Viết caption cho sản phẩm mới"
+        </div>
+        <div class="prompt-good">
+          <div class="label">✅ Sau</div>
+          "Bạn là content writer cho Chasy — thương hiệu đồ ăn vặt cho GenZ Việt Nam. Viết 1 caption ra mắt snack mới, tone hài hước gần gũi, dưới 150 từ, có CTA rõ ràng."
+        </div>
+      </div>
     </div>
+
     <div class="k-block">
       <h3>2. Cho ví dụ mẫu (Few-shot)</h3>
-      <p>"Đây là 2 email trước mà sếp đã duyệt. Viết email mới theo đúng tone và format này."</p>
-      <p style="margin-top: 4px; color: var(--sun-orange); font-weight: 600;">Tại sao: 1 ví dụ tốt hơn 100 từ mô tả.</p>
+      <p>1 ví dụ tốt hơn 100 từ mô tả.</p>
+      <div class="prompt-compare">
+        <div class="prompt-bad">
+          <div class="label">❌ Trước</div>
+          "Viết email theo đúng tone công ty"
+        </div>
+        <div class="prompt-good">
+          <div class="label">✅ Sau</div>
+          "Đây là 2 email trước mà sếp đã duyệt. Viết email mới theo đúng tone và format này: [dán ví dụ]"
+        </div>
+      </div>
     </div>
+
     <div class="k-block">
       <h3>3. Chia nhỏ việc (Chain of Thought)</h3>
-      <p>"Bước 1: Phân tích data → Bước 2: Tìm pattern → Bước 3: Đề xuất action → Bước 4: Viết báo cáo."</p>
-      <p style="margin-top: 4px; color: var(--sun-orange); font-weight: 600;">Tại sao: AI làm từng bước chính xác hơn làm tất cả 1 lần.</p>
+      <p>AI làm từng bước chính xác hơn làm tất cả 1 lần.</p>
+      <div class="prompt-compare">
+        <div class="prompt-bad">
+          <div class="label">❌ Trước</div>
+          "Phân tích data bán hàng và viết báo cáo"
+        </div>
+        <div class="prompt-good">
+          <div class="label">✅ Sau</div>
+          "Bước 1: Phân tích data → Bước 2: Tìm pattern → Bước 3: Đề xuất action → Bước 4: Viết báo cáo"
+        </div>
+      </div>
     </div>
+
     <div class="k-block">
       <h3>4. Nói rõ KHÔNG muốn gì</h3>
-      <p>"Không dùng từ 'synergy', 'leverage'. Không viết quá 150 từ. Không dùng bullet points."</p>
-      <p style="margin-top: 4px; color: var(--sun-orange); font-weight: 600;">Tại sao: AI rất giỏi tuân theo giới hạn — nếu bạn nói rõ.</p>
+      <p>AI rất giỏi tuân theo giới hạn — nếu bạn nói rõ.</p>
+      <div class="prompt-compare">
+        <div class="prompt-bad">
+          <div class="label">❌ Trước</div>
+          "Viết bài đăng Facebook"
+        </div>
+        <div class="prompt-good">
+          <div class="label">✅ Sau</div>
+          "Viết bài Facebook. KHÔNG dùng từ 'synergy', 'leverage'. KHÔNG quá 150 từ. KHÔNG dùng bullet points."
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 6: Knowledge × Skill — Đóng gói -->
+  <div class="k-panel" id="kp-packaging">
+    <div class="k-block">
+      <h3>Tư duy đóng gói — tại sao quan trọng?</h3>
+      <p style="font-family: 'Mali', cursive; font-size: 1.05rem; color: var(--text); font-weight: 700; margin-bottom: 8px;">Cho AI đọc đúng tài liệu → Dạy AI làm đúng bước → Bắt AI nộp đúng mẫu.<br>Đủ 3 thứ đó là luồng chạy được. Thiếu 1 là ra rác.</p>
+    </div>
+
+    <div class="k-block">
+      <h3>4 thành phần cần đóng gói</h3>
+      <div class="k-agent-layers">
+        <div class="k-agent-layer" style="background: #e8f4fd;">
+          <div class="layer-num">📚</div>
+          <div class="layer-name">Knowledge</div>
+          <div class="layer-desc">Tài liệu AI cần đọc trước — giống onboard nhân viên mới. VD: brand guideline, danh sách SP, đối thủ, tone of voice.</div>
+        </div>
+        <div class="k-agent-layer" style="background: #fff5e6;">
+          <div class="layer-num">⚙️</div>
+          <div class="layer-name">Skill</div>
+          <div class="layer-desc">Quy trình AI phải tuân theo — giống SOP. VD: cách viết caption Chasy (hook → body → CTA).</div>
+        </div>
+        <div class="k-agent-layer" style="background: #fff0f0;">
+          <div class="layer-num">🚫</div>
+          <div class="layer-name">Rule</div>
+          <div class="layer-desc">Giới hạn AI không được vượt — giống nội quy. VD: không dùng từ "synergy", không quá 200 từ, không so sánh với đối thủ.</div>
+        </div>
+        <div class="k-agent-layer" style="background: #f0fff0;">
+          <div class="layer-num">🔧</div>
+          <div class="layer-name">Tool</div>
+          <div class="layer-desc">Công cụ AI được phép dùng — giống phần mềm công ty cấp. VD: Claude chat, tạo file, search web.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="k-block">
+      <h3>Ví dụ Chasy — đóng gói cho team MKT</h3>
+      <ul>
+        <li><strong>Knowledge:</strong> Brand guideline Chasy (màu, font, tone) + danh sách 15 sản phẩm + 5 đối thủ chính</li>
+        <li><strong>Skill:</strong> Quy trình viết caption: Hook (1 câu gây tò mò) → Body (lợi ích SP) → CTA (mua ở đâu)</li>
+        <li><strong>Rule:</strong> Không quá 150 từ, không dùng "best seller", luôn có emoji, tone GenZ vui tươi</li>
+        <li><strong>Tool:</strong> Claude chat để viết, DALL-E để tạo hình minh hoạ nếu cần</li>
+      </ul>
+      <p style="margin-top: 12px; font-weight: 600; color: var(--sun-orange);">→ Đóng gói xong = bất kỳ ai trong team cũng chạy được, kết quả đồng nhất.</p>
     </div>
   </div>
 </section>
 
-<!-- ====== PRACTICE ====== -->
-<section id="practice" style="background: var(--section-alt); margin: 0 -24px; padding-left: 24px; padding-right: 24px;">
-  <div class="section-label">05 — Thực hành</div>
+<!-- ====== S5: USE CASES ====== -->
+<section id="usecase" style="background: var(--section-alt); margin: 0 -24px; padding-left: 24px; padding-right: 24px;">
+  <div class="section-label">05 — Chia sẻ kinh nghiệm</div>
+  <div class="section-title">25 Use Case thật của Xiu</div>
+  <div class="section-subtitle">Không lý thuyết — đây là những gì Xiu đã build bằng AI. Click để xem chi tiết.</div>
+
+  <div class="uc-filter">
+    <span class="uc-filter-group">Theo tính năng:</span>
+    <button class="active" onclick="filterUC('all', this)">Tất cả</button>
+    <button onclick="filterUC('chat', this)">Chat & Tư duy</button>
+    <button onclick="filterUC('code', this)">Code & Automation</button>
+    <button onclick="filterUC('web', this)">Tạo file & Web</button>
+    <button onclick="filterUC('skill', this)">Custom Skill</button>
+    <span class="uc-filter-group" style="margin-left: 8px;">Theo vấn đề:</span>
+    <button onclick="filterUC('emp', this)">Vấn đề nhân viên</button>
+    <button onclick="filterUC('ceo', this)">Vấn đề CEO</button>
+  </div>
+
+  <div class="uc-grid">
+    <!-- CHAT USE CASES -->
+    <div class="uc-card" data-type="chat" data-problem="ceo" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>Growth Profile Vy Nhung & Lan Vy</h4>
+      <p>Đánh giá năng lực + lộ trình phát triển cá nhân</p>
+      <div class="uc-expand"><div class="uc-expand-inner">AI phân tích điểm mạnh/yếu cụ thể, đề xuất action plan theo từng người.<div class="uc-result">✅ Nhân viên biết rõ cần phát triển gì</div></div></div>
+    </div>
+    <div class="uc-card" data-type="chat" data-problem="ceo" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>PP HR Connector, Sale Admin, TP KD</h4>
+      <p>Performance Profile cho 3 vị trí — kỳ vọng rõ từ ngày 1</p>
+      <div class="uc-expand"><div class="uc-expand-inner">PP gắn chiến lược thực tế, tiêu chí đo được theo mốc 30/60/90 ngày.<div class="uc-result">✅ Tuyển đúng người, onboard nhanh</div></div></div>
+    </div>
+    <div class="uc-card" data-type="chat" data-problem="ceo" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>MTCV + Onboarding Sale Admin</h4>
+      <p>Từ PP sinh mô tả công việc + lịch onboarding 30 ngày</p>
+      <div class="uc-expand"><div class="uc-expand-inner">Nhân viên ký MTCV ngày đầu, manager có lịch onboarding chi tiết.<div class="uc-result">✅ Onboarding có hệ thống</div></div></div>
+    </div>
+    <div class="uc-card" data-type="chat" data-problem="ceo" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>Manager README Framework</h4>
+      <p>Viết "user manual" cho sếp — team hiểu cách làm việc cùng</p>
+      <div class="uc-expand"><div class="uc-expand-inner">Team đọc xong biết sếp thích giao tiếp kiểu gì, kỳ vọng gì.<div class="uc-result">✅ Giảm miscommunication</div></div></div>
+    </div>
+    <div class="uc-card" data-type="chat" data-problem="ceo" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>360-degree Survey</h4>
+      <p>Thiết kế khảo sát đánh giá 360 cho tổ chức</p>
+      <div class="uc-expand"><div class="uc-expand-inner">AI thiết kế câu hỏi survey chuẩn, phân tích kết quả tự động.<div class="uc-result">✅ Feedback minh bạch, có data</div></div></div>
+    </div>
+    <div class="uc-card" data-type="chat" data-problem="ceo" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>OKR 2026 An Quyên</h4>
+      <p>Mục tiêu chiến lược cả năm, có Key Results đo được</p>
+      <div class="uc-expand"><div class="uc-expand-inner">OKR theo framework chuẩn, gắn chiến lược công ty.<div class="uc-result">✅ OKR hoàn chỉnh trong 1 buổi</div></div></div>
+    </div>
+    <div class="uc-card" data-type="chat" data-problem="ceo" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>Lộ trình 60 ngày tái cấu trúc</h4>
+      <p>Tái cấu trúc tổ chức — timeline chi tiết từng tuần</p>
+      <div class="uc-expand"><div class="uc-expand-inner">Phân công trách nhiệm, checkpoint đánh giá.<div class="uc-result">✅ Roadmap rõ ràng</div></div></div>
+    </div>
+    <div class="uc-card" data-type="chat" data-problem="ceo" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>Phân tích chi phí nhân sự</h4>
+      <p>BP kế toán 34.9% quỹ lương — hợp lý không?</p>
+      <div class="uc-expand"><div class="uc-expand-inner">Benchmark industry standard, key-person risk, đề xuất cấu trúc lại.<div class="uc-result">✅ Quyết định từ data</div></div></div>
+    </div>
+    <div class="uc-card" data-type="chat" data-problem="ceo" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>Pricing kênh Online</h4>
+      <p>Định giá sản phẩm trên từng kênh bán hàng</p>
+      <div class="uc-expand"><div class="uc-expand-inner">So sánh margin theo kênh, chiến lược giá phù hợp.<div class="uc-result">✅ Pricing strategy có data backup</div></div></div>
+    </div>
+    <div class="uc-card" data-type="chat" data-problem="ceo" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>Phân tích cấu trúc kênh bán</h4>
+      <p>Đánh giá hiệu quả từng kênh phân phối</p>
+      <div class="uc-expand"><div class="uc-expand-inner">AI phân tích revenue, margin, growth rate theo kênh.<div class="uc-result">✅ Biết kênh nào scale, kênh nào cắt</div></div></div>
+    </div>
+    <div class="uc-card" data-type="chat" data-problem="emp" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>AI Capability Building Framework</h4>
+      <p>Framework xây năng lực AI cho cả tổ chức</p>
+      <div class="uc-expand"><div class="uc-expand-inner">Dùng AI để xây framework dạy người khác dùng AI.<div class="uc-result">✅ Cả công ty nâng level</div></div></div>
+    </div>
+    <div class="uc-card" data-type="chat" data-problem="ceo" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>Agentic AI Principles</h4>
+      <p>Nguyên tắc để AI hoạt động như agent tự chủ</p>
+      <div class="uc-expand"><div class="uc-expand-inner">AI hiểu ngữ cảnh, nhớ quy trình, tự đề xuất bước tiếp.<div class="uc-result">✅ AI từ "công cụ" thành "đồng nghiệp"</div></div></div>
+    </div>
+    <div class="uc-card" data-type="chat" data-problem="emp" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>Cấu trúc Lark Group 4-tier</h4>
+      <p>Tổ chức lại nhóm chat Lark theo 4 tầng logic</p>
+      <div class="uc-expand"><div class="uc-expand-inner">Công ty → Phòng ban → Dự án → Task.<div class="uc-result">✅ Thông tin đúng người, đúng chỗ</div></div></div>
+    </div>
+    <!-- Thêm 3 use case nhân viên -->
+    <div class="uc-card" data-type="chat" data-problem="emp" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>Viết content MKT hàng tuần</h4>
+      <p>Caption, bài đăng, story — AI viết theo đúng tone Chasy</p>
+      <div class="uc-expand"><div class="uc-expand-inner">Cho AI brand guideline + ví dụ mẫu → content đúng tone, ít phải sửa.<div class="uc-result">✅ Từ 3 tiếng → 30 phút</div></div></div>
+    </div>
+    <div class="uc-card" data-type="chat" data-problem="emp" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>Tóm tắt meeting notes</h4>
+      <p>Họp xong AI tóm tắt + liệt kê action items</p>
+      <div class="uc-expand"><div class="uc-expand-inner">Gửi notes cho AI → tóm 5 bullet points + assign task.<div class="uc-result">✅ Không ai quên việc sau họp</div></div></div>
+    </div>
+    <div class="uc-card" data-type="chat" data-problem="emp" onclick="this.classList.toggle('open')">
+      <span class="uc-badge chat">Chat</span>
+      <h4>Research đối thủ nhanh</h4>
+      <p>Tìm hiểu đối thủ bán snack — giá, kênh, điểm mạnh/yếu</p>
+      <div class="uc-expand"><div class="uc-expand-inner">AI tổng hợp thành bảng so sánh, tiết kiệm nửa ngày research.<div class="uc-result">✅ Từ nửa ngày → 15 phút</div></div></div>
+    </div>
+    <!-- CODE USE CASES -->
+    <div class="uc-card" data-type="code" data-problem="emp" onclick="this.classList.toggle('open')">
+      <span class="uc-badge code">Code</span>
+      <h4>Đối soát VTP v1.1</h4>
+      <p>Đối soát đơn hàng vận chuyển tự động</p>
+      <div class="uc-expand"><div class="uc-expand-inner">Script tự động so khớp data, flag sai lệch, xuất báo cáo.<div class="uc-result">✅ Từ 1 ngày → 10 phút</div></div></div>
+    </div>
+    <div class="uc-card" data-type="code" data-problem="emp" onclick="this.classList.toggle('open')">
+      <span class="uc-badge code">Code</span>
+      <h4>Điều phối đơn hàng</h4>
+      <p>Hệ thống tự phân bổ đơn theo kho, vùng, carrier</p>
+      <div class="uc-expand"><div class="uc-expand-inner">Logic điều phối: đơn nào giao kho nào, carrier nào rẻ nhất.<div class="uc-result">✅ Giảm sai sót, nhanh hơn 5x</div></div></div>
+    </div>
+    <div class="uc-card" data-type="code" data-problem="ceo" onclick="this.classList.toggle('open')">
+      <span class="uc-badge code">Code</span>
+      <h4>Bot Telegram "Trợ lý AQ"</h4>
+      <p>Bot nhắn nhở, gửi báo cáo tự động qua Telegram</p>
+      <div class="uc-expand"><div class="uc-expand-inner">AI build bot từ A-Z: nhận lệnh, xử lý data, gửi kết quả.<div class="uc-result">✅ Trợ lý ảo riêng, chạy 24/7</div></div></div>
+    </div>
+    <!-- WEB USE CASES -->
+    <div class="uc-card" data-type="web" data-problem="ceo" onclick="this.classList.toggle('open')">
+      <span class="uc-badge web">Web</span>
+      <h4>Manager README Website</h4>
+      <p>Trang web cá nhân — deploy lên Vercel</p>
+      <div class="uc-expand"><div class="uc-expand-inner">AI viết toàn bộ HTML/CSS/JS. 0 dòng code viết tay.<div class="uc-result">✅ readme-jinxiu.vercel.app</div></div></div>
+    </div>
+    <div class="uc-card" data-type="web" data-problem="ceo" onclick="this.classList.toggle('open')">
+      <span class="uc-badge web">Web</span>
+      <h4>Ma Trận Ứng Dụng AI</h4>
+      <p>Bản đồ visual tất cả cách dùng AI</p>
+      <div class="uc-expand"><div class="uc-expand-inner">Web interactive: click từng ô thấy chi tiết.<div class="uc-result">✅ Nhìn 1 phát hiểu AI làm gì</div></div></div>
+    </div>
+    <div class="uc-card" data-type="web" data-problem="ceo" onclick="this.classList.toggle('open')">
+      <span class="uc-badge web">Web</span>
+      <h4>Playbook Hub / Két Sắt Tri Thức</h4>
+      <p>Lưu trữ quy trình, framework, kinh nghiệm công ty</p>
+      <div class="uc-expand"><div class="uc-expand-inner">Đóng gói kinh nghiệm thành tài liệu ai cũng tra cứu được.<div class="uc-result">✅ Tri thức không mất khi người đi</div></div></div>
+    </div>
+    <!-- SKILL USE CASES -->
+    <div class="uc-card" data-type="skill" data-problem="ceo" onclick="this.classList.toggle('open')">
+      <span class="uc-badge skill">Skill</span>
+      <h4>PP Builder Skill</h4>
+      <p>Dạy AI viết Performance Profile tự động</p>
+      <div class="uc-expand"><div class="uc-expand-inner">Đóng gói kinh nghiệm thành skill — AI học 1 lần, dùng mãi.<div class="uc-result">✅ Từ 1 ngày → 15 phút viết PP</div></div></div>
+    </div>
+    <div class="uc-card" data-type="skill" data-problem="ceo" onclick="this.classList.toggle('open')">
+      <span class="uc-badge skill">Skill</span>
+      <h4>MTCV + Onboarding Generator</h4>
+      <p>Từ PP → tự động sinh MTCV + lịch onboarding 30 ngày</p>
+      <div class="uc-expand"><div class="uc-expand-inner">Pipeline: PP → MTCV → Onboarding. End-to-end.<div class="uc-result">✅ Quy trình tuyển dụng tự động</div></div></div>
+    </div>
+    <div class="uc-card" data-type="skill" data-problem="ceo" onclick="this.classList.toggle('open')">
+      <span class="uc-badge skill">Skill</span>
+      <h4>IPO Output Designer</h4>
+      <p>Skill kiểm tra chất lượng output — hỏi ngược 5 câu</p>
+      <div class="uc-expand"><div class="uc-expand-inner">Framework IPO: Input → Process → Output. Hỏi đúng trước khi làm.<div class="uc-result">✅ Output đúng 80-90% lần đầu</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== S6: THỰC HÀNH ====== -->
+<section id="practice">
+  <div class="section-label">06 — Thực hành</div>
   <div class="section-title">Thử ngay tại đây</div>
   <div class="section-subtitle">Lý thuyết 30 phút, thực hành 2 tiếng. Mở laptop ra và thử luôn.</div>
 
@@ -1071,7 +1461,7 @@ footer .brand {
       <div class="pr-step-num">3</div>
       <div class="pr-step-content">
         <h3>Thử và feedback — không cần đúng lần đầu</h3>
-        <p>AI giống con người — lần đầu có thể chưa đúng ý. Nói lại cho rõ hơn, AI sẽ điều chỉnh.</p>
+        <p>AI giống con người — lần đầu có thể chưa đúng ý. Nói lại rõ hơn, AI sẽ điều chỉnh.</p>
       </div>
     </div>
     <div class="pr-step">
@@ -1080,6 +1470,36 @@ footer .brand {
         <h3>Share kết quả — mọi người cùng giao lưu</h3>
         <p>Show cho team xem bạn đã làm gì. Hỏi han, góp ý, học từ nhau.</p>
       </div>
+    </div>
+  </div>
+
+  <div class="pr-prompts">
+    <div style="font-family: 'Mali', cursive; font-weight: 700; font-size: 1.1rem; margin-top: 16px; margin-bottom: 4px;">Prompt mẫu — copy paste dùng ngay:</div>
+
+    <div class="pr-prompt-card" onclick="copyPrompt(this)">
+      <div class="pr-prompt-label">Content MKT</div>
+      <div class="pr-prompt-text">Bạn là content writer cho Chasy. Viết 3 ý tưởng caption cho [sản phẩm X], tone vui vẻ GenZ, mỗi caption dưới 100 từ.</div>
+      <button class="copy-btn">Copy</button>
+    </div>
+    <div class="pr-prompt-card" onclick="copyPrompt(this)">
+      <div class="pr-prompt-label">Research đối thủ</div>
+      <div class="pr-prompt-text">Tôi có danh sách 20 đối thủ bán snack. So sánh 5 đối thủ lớn nhất theo: giá, kênh bán, điểm mạnh, điểm yếu. Trình bày bảng.</div>
+      <button class="copy-btn">Copy</button>
+    </div>
+    <div class="pr-prompt-card" onclick="copyPrompt(this)">
+      <div class="pr-prompt-label">Lên kế hoạch</div>
+      <div class="pr-prompt-text">Tôi cần lên kế hoạch tuần tới. Task cần làm: [list]. Sắp xếp theo mức độ ưu tiên, gợi ý thứ tự thực hiện và thời gian dự kiến.</div>
+      <button class="copy-btn">Copy</button>
+    </div>
+    <div class="pr-prompt-card" onclick="copyPrompt(this)">
+      <div class="pr-prompt-label">Tóm tắt tài liệu</div>
+      <div class="pr-prompt-text">Tóm tắt file đính kèm thành 5 bullet points, mỗi point dưới 20 từ.</div>
+      <button class="copy-btn">Copy</button>
+    </div>
+    <div class="pr-prompt-card" onclick="copyPrompt(this)">
+      <div class="pr-prompt-label">Email đối tác</div>
+      <div class="pr-prompt-text">Viết email cho đối tác [tên] về việc [chủ đề]. Tone chuyên nghiệp nhưng thân thiện, dưới 200 từ.</div>
+      <button class="copy-btn">Copy</button>
     </div>
   </div>
 
@@ -1095,9 +1515,9 @@ footer .brand {
   </div>
 </section>
 
-<!-- ====== ROADMAP ====== -->
-<section id="next">
-  <div class="section-label">06 — Sau workshop</div>
+<!-- ====== S7: SAU WORKSHOP ====== -->
+<section id="next" style="background: var(--section-alt); margin: 0 -24px; padding-left: 24px; padding-right: 24px;">
+  <div class="section-label">07 — Sau workshop</div>
   <div class="section-title">Đi tiếp thế nào?</div>
   <div class="section-subtitle">Workshop chỉ là bước đầu. Đây là lộ trình để bạn tiếp tục.</div>
 
@@ -1110,7 +1530,7 @@ footer .brand {
     <div class="rm-card">
       <div class="rm-icon">📈</div>
       <h3>Tuần 2-3: Tìm pattern</h3>
-      <p>Nhận ra việc nào AI làm tốt, việc nào cần mình. Bắt đầu lưu lại các prompt hiệu quả — đó là "skill" đầu tiên của bạn.</p>
+      <p>Nhận ra việc nào AI làm tốt, việc nào cần mình. Bắt đầu lưu lại prompt hiệu quả — đó là "skill" đầu tiên.</p>
     </div>
     <div class="rm-card">
       <div class="rm-icon">🚀</div>
@@ -1162,12 +1582,24 @@ function filterUC(type, btn) {
   document.querySelectorAll('.uc-filter button').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   document.querySelectorAll('.uc-card').forEach(card => {
-    if (type === 'all' || card.dataset.type === type) {
+    if (type === 'all') {
       card.style.display = '';
+    } else if (type === 'emp' || type === 'ceo') {
+      card.style.display = card.dataset.problem === type ? '' : 'none';
     } else {
-      card.style.display = 'none';
+      card.style.display = card.dataset.type === type ? '' : 'none';
     }
   });
+}
+
+// Copy prompt
+function copyPrompt(el) {
+  const text = el.querySelector('.pr-prompt-text').textContent;
+  navigator.clipboard.writeText(text);
+  const btn = el.querySelector('.copy-btn');
+  btn.textContent = 'Copied!';
+  btn.style.color = '#1a8c1a';
+  setTimeout(() => { btn.textContent = 'Copy'; btn.style.color = ''; }, 2000);
 }
 </script>
 
