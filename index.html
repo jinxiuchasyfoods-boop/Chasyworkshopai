@@ -1477,28 +1477,28 @@ footer .brand { font-family: 'Mali', cursive; color: var(--sun-orange); font-wei
     <div style="font-family: 'Mali', cursive; font-weight: 700; font-size: 1.1rem; margin-top: 16px; margin-bottom: 4px;">Prompt mẫu — copy paste dùng ngay:</div>
 
     <div class="pr-prompt-card" onclick="copyPrompt(this)">
-      <div class="pr-prompt-label">Content MKT</div>
-      <div class="pr-prompt-text">Bạn là content writer cho Chasy. Viết 3 ý tưởng caption cho [sản phẩm X], tone vui vẻ GenZ, mỗi caption dưới 100 từ.</div>
+      <div class="pr-prompt-label">Content MKT — áp dụng Role + Few-shot + Rule</div>
+      <div class="pr-prompt-text">Bạn là content writer cho Chasy — thương hiệu đồ ăn vặt Việt Nam, target GenZ 16-25 tuổi. Tone: hài hước, gần gũi, hơi "xàm" nhưng không thô.<br><br>Đây là 1 caption mẫu đã duyệt: "[dán caption cũ vào đây]"<br><br>Viết 3 caption cho sản phẩm [tên SP], mỗi caption theo cấu trúc: Hook gây tò mò (1 câu) → Body lợi ích sản phẩm (2-3 câu) → CTA rõ ràng.<br><br>KHÔNG dùng từ: "best seller", "number 1", "siêu phẩm". KHÔNG quá 120 từ/caption. Luôn có ít nhất 2 emoji.</div>
       <button class="copy-btn">Copy</button>
     </div>
     <div class="pr-prompt-card" onclick="copyPrompt(this)">
-      <div class="pr-prompt-label">Research đối thủ</div>
-      <div class="pr-prompt-text">Tôi có danh sách 20 đối thủ bán snack. So sánh 5 đối thủ lớn nhất theo: giá, kênh bán, điểm mạnh, điểm yếu. Trình bày bảng.</div>
+      <div class="pr-prompt-label">Phân tích đối thủ — áp dụng Chain of Thought + Output chuẩn</div>
+      <div class="pr-prompt-text">Tôi là MKT của Chasy — công ty đồ ăn vặt. Cần phân tích 5 đối thủ cạnh tranh trực tiếp trong ngành snack Việt Nam.<br><br>Làm theo 3 bước:<br>Bước 1: Liệt kê 5 thương hiệu snack phổ biến nhất tại VN (ngoài Chasy)<br>Bước 2: So sánh theo bảng — cột: Thương hiệu | Phân khúc giá | Kênh bán chính | Điểm mạnh | Điểm yếu | Cơ hội cho Chasy<br>Bước 3: Viết 3 insight hành động — Chasy nên làm gì khác biệt dựa trên phân tích trên<br><br>Output: bảng + 3 insight, mỗi insight dưới 2 câu.</div>
       <button class="copy-btn">Copy</button>
     </div>
     <div class="pr-prompt-card" onclick="copyPrompt(this)">
-      <div class="pr-prompt-label">Lên kế hoạch</div>
-      <div class="pr-prompt-text">Tôi cần lên kế hoạch tuần tới. Task cần làm: [list]. Sắp xếp theo mức độ ưu tiên, gợi ý thứ tự thực hiện và thời gian dự kiến.</div>
+      <div class="pr-prompt-label">Lên kế hoạch tuần — áp dụng IPO + Context rõ</div>
+      <div class="pr-prompt-text">Tôi là nhân viên MKT, làm việc 8h/ngày (thứ 2-6). Tuần tới cần hoàn thành các task sau: [dán danh sách task]<br><br>Input: Deadline cứng là [ngày X] cho task [Y]. Các task khác flexible.<br>Process: Sắp xếp theo Eisenhower (Urgent+Important trước). Gộp task tương tự vào cùng block thời gian.<br>Output: Bảng kế hoạch theo ngày, mỗi ngày có: buổi sáng / buổi chiều, task cụ thể, thời lượng dự kiến. Cuối bảng ghi "buffer time" cho việc phát sinh.</div>
       <button class="copy-btn">Copy</button>
     </div>
     <div class="pr-prompt-card" onclick="copyPrompt(this)">
-      <div class="pr-prompt-label">Tóm tắt tài liệu</div>
-      <div class="pr-prompt-text">Tóm tắt file đính kèm thành 5 bullet points, mỗi point dưới 20 từ.</div>
+      <div class="pr-prompt-label">Tóm tắt họp — áp dụng Output chuẩn + Người nhận rõ</div>
+      <div class="pr-prompt-text">Đây là notes từ buổi họp team MKT sáng nay: [dán notes]<br><br>Người đọc: Sếp (CEO) — cần nắm nhanh trong 30 giây, không cần chi tiết.<br><br>Output gồm 3 phần:<br>1. TÓM TẮT: 3 bullet chính, mỗi bullet dưới 15 từ<br>2. QUYẾT ĐỊNH: Những gì đã được confirm trong họp<br>3. ACTION ITEMS: Bảng — Ai | Làm gì | Deadline<br><br>Tone: ngắn gọn, rõ ràng, không rào trước đón sau.</div>
       <button class="copy-btn">Copy</button>
     </div>
     <div class="pr-prompt-card" onclick="copyPrompt(this)">
-      <div class="pr-prompt-label">Email đối tác</div>
-      <div class="pr-prompt-text">Viết email cho đối tác [tên] về việc [chủ đề]. Tone chuyên nghiệp nhưng thân thiện, dưới 200 từ.</div>
+      <div class="pr-prompt-label">Email đối tác — áp dụng Role + Context + Giới hạn</div>
+      <div class="pr-prompt-text">Bạn là trợ lý viết email cho CEO của Chasy (công ty đồ ăn vặt). Mối quan hệ với đối tác: đã hợp tác 6 tháng, quan hệ tốt, gọi nhau bằng anh/chị.<br><br>Viết email cho [tên đối tác] — [chức vụ] tại [công ty], về việc: [mô tả ngắn chủ đề].<br><br>Yêu cầu:<br>- Tone: chuyên nghiệp nhưng ấm, không cứng nhắc<br>- Dưới 150 từ (đối tác bận, email dài không ai đọc)<br>- Mở bằng 1 câu hỏi thăm ngắn, KHÔNG generic kiểu "Hi vọng anh khoẻ"<br>- Kết bằng next step rõ ràng (ai làm gì, deadline nào)</div>
       <button class="copy-btn">Copy</button>
     </div>
   </div>
